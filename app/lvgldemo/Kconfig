@@ -1,0 +1,50 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+menuconfig EXAMPLES_LVGLDEMO
+	tristate "LVGL Demo"
+	default n
+	depends on GRAPHICS_LVGL
+	---help---
+		Enable build the Light and Versatile Graphics Library Demo programs
+
+if EXAMPLES_LVGLDEMO
+
+config EXAMPLES_LVGLDEMO_PRIORITY
+	int "lvgldemo task priority"
+	default 100
+
+config EXAMPLES_LVGLDEMO_STACKSIZE
+	int "lvgldemo stack size"
+	default 32768
+
+config EXAMPLES_LVGLDEMO_INPUT_DEVPATH
+	string "Touchscreen device path"
+	default "/dev/input0"
+	depends on INPUT_TOUCHSCREEN
+	---help---
+		The path to the touchscreen device. Default: "/dev/input0"
+
+config EXAMPLES_LVGLDEMO_WAKEUP_ENABLE
+	bool "Enable voice wake word detector"
+	default n
+	depends on MEDIA
+	---help---
+		Enable the voice wake word detector that listens for
+		"xiaoQxiaoQ!" and prints "Resume by xiaoQ!".
+		Uses the platform VAD recorder source for keyword spotting.
+
+if EXAMPLES_LVGLDEMO_WAKEUP_ENABLE
+
+config EXAMPLES_LVGLDEMO_WAKEUP_COOLDOWN_MS
+	int "Wake word cooldown period (ms)"
+	default 3000
+	---help---
+		Minimum time in milliseconds between consecutive wake
+		word detections. Prevents rapid re-triggering.
+
+endif # EXAMPLES_LVGLDEMO_WAKEUP_ENABLE
+
+endif # EXAMPLES_LVGLDEMO

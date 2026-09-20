@@ -9,8 +9,7 @@
   <include name="openvela.xml"/>
 
   <project path="contest2026_495_qinyunzhishang" name="contest2026_495_qinyunzhishang">
-    <linkfile src="app/hello_app" dest="packages/demos/contest2026_495_hello_app"/>
-    <linkfile src="quickapp/hello_quickapp" dest="packages/apps/contest2026_495_hello_quickapp"/>
-    <linkfile src="board/contest_board" dest="vendor/openvela/boards/contest2026_495_board"/>
+    <linkfile src="app/lvgldemo" dest="packages/demos/contest2026_495_lvgldemo"/>
+    <linkfile src="app/ai_agent" dest="packages/demos/contest2026_495_ai_agent"/>
   </project>
 </manifest>

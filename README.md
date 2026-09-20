@@ -1,148 +1,295 @@
-# contest2026_495_qinyunzhishang
+# 全录智伴 (QuanLu ZhiBan) —— 端云协同 AI 智能产品，赋能办公自动化
 
-👋 欢迎参加 **2026 首届 openvela AI 硬件开发者大赛**！
+> **2026 首届 OpenVela AI 硬件开发者大赛** · 队伍「勤云之上」· 编号 495
 
-这是组委会为你的队伍创建的**专属参赛仓库**（本仓为样例/模板，队伍编号 `495`；你看到的将是你自己的 `contest2026_<编号>_<队伍名>`）。比赛期间，你的全部参赛代码、打包产物与 AI Coding 日志都提交到这里。
-
-> 本仓既是「代码仓」，又内置了一键拉取整套 openvela 工程的 `repo` 清单（manifest）。你只需跟它打交道，**自始至终只动一个文件夹**。
-
+基于 OpenVela OS（NuttX RTOS）与 BES2800 BP 芯片打造的**端云协同轻量化 AI 办公终端**：以 AI 语音对话为核心交互，深度集成飞书生态，覆盖办公信息从采集、处理到归档的全流程自动化。本作品由华勤技术软件中心三部自主立项开发（队伍「勤云之上」，编号 495），是团队的 AI 办公终端技术储备项目。
 ---
-
-## 一、先读这些官方文档
-
-**通用（所有赛道必读）：**
-
-| 文档                                                                                                                                     | 用途                                           |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| [《大赛总览》](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/contest_overview.md)                        | 赛道、流程、评分、资源，建议先通读             |
-| [《参赛代码提交指南》](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/code_submission_guide.md)           | 仓库获取、提交流程、时间与权限（**以此为准**） |
-| [《AI Coding 日志归集与提交手册》](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/ai_coding_log_guide.md) | 如何导出 AI 对话日志并提交到 `logs/`           |
-
-**按你的赛道选读（三选一）：**
-
-| 赛道                  | 教程导航                                                                                                                                                 |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 快应用 / 手表应用创新 | [快应用教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/quickapp/quickapp_guide_index.md)                         |
-| AI 硬件产品创新       | [AI 硬件赛道教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/ai_hardware/ai_hardware_guide_index.md)              |
-| 新硬件适配            | [新硬件适配赛道教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/hardware_porting/hardware_porting_guide_index.md) |
-
----
-
-## 二、第一步：拉取完整工程
-
-用组委会提供的命令一键拉取「openvela 全量源码 + 你的专属仓」：
-
-```bash
-repo init -u https://github.com/open-vela/contest2026_495_qinyunzhishang \
-  -b dev-ai-contest-2026 -m contest2026_495_qinyunzhishang.xml
-repo sync -c -j8
-```
-
-同步后，你的整个仓库位于工作区的 `contest2026_495_qinyunzhishang/`，openvela 全量源码在外层（`nuttx/`、`apps/`、`packages/`、`vendor/` 等）。
-
----
-
-## 三、第二步：在哪里写代码
-
-**只在自己的仓目录 `contest2026_495_qinyunzhishang/` 里开发。** 不同作品形态放在对应子目录，manifest 会通过 `<linkfile>` 把它们**软链**到 openvela 编译树该在的位置——你不用手动 copy：
-
-| 作品形态 | 你的代码放这里             | 系统自动映射到                                 |
-| -------- | -------------------------- | ---------------------------------------------- |
-| 应用     | `app/hello_app/`           | `packages/demos/contest2026_495_hello_app`     |
-| 快应用   | `quickapp/hello_quickapp/` | `packages/apps/contest2026_495_hello_quickapp` |
-| 板级适配 | `board/contest_board/`     | `vendor/openvela/boards/contest2026_495_board` |
-
-> 用不到的形态目录可以删掉；新增作品时按同样规则加子目录，并在 `contest2026_495_qinyunzhishang.xml` 里补一条 `<linkfile>` 映射即可。**生产仓库（packages/nuttx/vendor 等）零改动。**
-
-建议仓库目录约定（便于评委定位）：
-
-```text
-app/ | quickapp/ | board/   # 你的作品代码
-logs/                       # AI Coding 日志（主动导出后提交，格式见 logs/README.md）
-README.md                   # 作品说明（提交前请改成你自己的，见第六节）
-```
-
-> 仓内附带了一个 `.gitignore.example`，给出了**编译产物**等不需要进仓的文件示例。如需启用，`cp .gitignore.example .gitignore` 后按需增删即可。**注意 `logs/` 下最终导出的 AI Coding 日志必须提交，不要忽略。**
->
-> `logs/` 的目录结构与提交格式见 [logs/README.md](logs/README.md)。
-
----
-
-## 四、第三步：编译与运行
-
-编译/运行步骤随作品形态不同而不同，请参考你所在赛道的教程导航：
-
-- 快应用 / 手表应用：[快应用教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/quickapp/quickapp_guide_index.md)（含模拟器与开发板部署）。
-- AI 硬件产品创新：[AI 硬件赛道教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/ai_hardware/ai_hardware_guide_index.md)（环境搭建、编译烧录、Skill 开发）。
-- 新硬件适配：[新硬件适配赛道教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/hardware_porting/hardware_porting_guide_index.md)（BSP 移植、最小 NSH 基线）。
-
-子目录已通过 manifest 中的 `<linkfile>` 软链进 openvela 编译树，因此构建在 openvela 工作区**根目录**（即你这个仓的上一级）进行。openvela 使用 `build.sh` 作为统一入口，接收一个 **board config 路径**作为参数：
-
-```bash
-# 进入 openvela 工作区根目录（你的仓的上一级）
-cd ..
-
-# 通用语法：第一个参数是 board config 路径，第二个参数可以是 menuconfig / distclean 等
-./build.sh <board-config-path> [menuconfig|distclean] [-j8]
-```
-
-> 具体的 board config 路径、目标产物、模拟器/真机部署方式请以你所在赛道的教程导航为准。本仓 `app/` `quickapp/` `board/` 三个示例骨架对应的 Kconfig 选项可通过 `menuconfig` 启用。
-
----
-
-## 五、第四步：提交作品
-
-1. **fork** 你的专属仓 → 开发 → `git commit` 并推送 → 向专属仓发起 **Pull Request**，可**自行 review 并合入**（无需等组委会）。
-2. **AI Coding 日志**：与 AI 工具的对话会自动记录到本机 staging（不会自动上传），需你**主动导出/打包**选定会话到仓内 `logs/` 目录后一并提交。详见[《AI Coding 日志归集与提交手册》](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/ai_coding_log_guide.md)。
-3. 若需改动 **nuttx 等公共仓库**，不在本仓改，而是 fork 对应公共仓、以 PR 提交到 `dev-ai-contest-2026` 分支，由组委会 review 后合入。
-
-> ⏰ **提交作品截止：9 月 20 日**。截止后统一收回 push 权限，仍可查看 / clone。
->
-> 获奖后再按要求将作品 PR 至 openvela 上游对应仓库（走标准 PR + CI 流程）。
-
-### 关于 PR 与 CLA
-
-- 本仓所有改动通过 **Pull Request** 合入（分支保护强制，可自行合入自己的 PR）。
-- 首次贡献需在[**官网签署 CLA**](https://openvela.com/#/community/cla)；PR 上会自动跑 `cla/signature` 检查，在官网签署成功后，在 PR 评论 `/check-cla` 复检即可通过。
-
----
-
-## 六、提交前：把本 README 改成你的作品说明
-
-本文件目前是组委会给的**使用说明书**。**作品提交前，请把它替换成你自己作品的说明**，方便评委快速了解你做了什么、怎么跑起来。建议至少包含以下内容：
-
-```markdown
-# <你的作品名>
 
 ## 一、作品简介
-<一句话/一段话说明这个作品是什么、解决什么问题、亮点在哪>
 
-## 二、选题方向
-<快应用 / 手表应用创新 ｜ AI 硬件产品创新 ｜ 新硬件适配 ｜ 自定方向，并简述理由>
+传统办公中，会议记录依赖人工速记易遗漏，拍照分析需掏出手机操作繁琐，飞书文档、群聊消息、会议记录分散各处缺乏统一入口。本作品在 BES2800 BP 嵌入式平台上构建了可独立运行的轻量化 AI 办公终端——无需掏出手机，开口即能对话、入会即出纪要、拍照即得解析、一句话即获群聊要闻，让 AI 办公能力真正随身携带、随叫随到。
 
-## 三、目录结构
-<列出你这个仓里各目录/文件的作用，例如：>
-- `app/xxx/`        — <说明>
-- `board/xxx/`      — <说明>
-- `quickapp/xxx/`   — <说明>
-- `logs/`           — AI Coding 日志
-- `docs/` 或其他    — <说明>
+### 核心功能
 
-## 四、运行方式
-<拉取工程后，如何编译、烧录/部署、运行的完整步骤；最好能让评委照着一步步复现>
+#### 1. AI 语音对话 —— 即说即应的随身智能助手
 
-## 五、AI Coding 使用说明
-<说明本作品如何借助 AI 辅助开发：
-- 在需求拆解 / 方案设计 / 编码 / 调试 / 文档等环节如何与 AI 协作；
-- AI 对开发效率或质量带来的实际帮助。
-完整对话日志见 logs/ 目录>
-```
+- **全双工流式交互**：说话、停止、应答一气呵成，对话响应延迟 ≤2s，交流体验接近自然对话
+- **三合一模型架构**：Qwen-Omni-Realtime 通过**单条 WebSocket** 同时完成语音识别、大模型对话、语音合成，避免三次独立调用的累积延迟
+- **常连接设计**：空闲期保持 WebSocket 预连接不断开，配合硬件 VAD 持续检测，无需等待唤醒后的连接建立
+- **流式播报**：TTS 按标点分段合成、边合成边播报，长回复不卡顿
+- **智能省电调度**：对话前提前关闭 WiFi 省电模式消除下行音频抖动，结束后延迟恢复，兼顾流畅与功耗
 
-> 提示：将会根据「作品本身 + 你的 README 说明 + `logs/` 里的 AI Coding 日志」来理解和评估你的作品，README 写清楚很重要。
+#### 2. 飞书生态深度集成 —— 办公信息的统一智能入口
+
+- **飞书文档语音播报**：说一句“念一下某某文档”，设备经 OAuth2 拉取文档全文，LLM 提炼要点后 TTS 播报——会议开始前一分钟，用它快速了解文档背景
+- **今日消息归纳**：一句话获取指定群聊当日要闻，由 qwen3.5-flash 归纳成摘要播报——无需逐条刷群，重要信息不遗漏
+- **飞书群聊机器人**：设备以长连接接入群聊，同事在群里发消息，AI 自动理解并回复——人不在工位，群聊不缺席
+- **意图快速路由**：本地关键词匹配命中（文档名、群聊名、“今日消息”等）直接走飞书 API 快速路径，不经过大模型，响应更快、token 更省
+- **全功能闭环**：会议纪要（功能 3）与拍照解析结果（功能 4）均自动归档至飞书，信息采集到沉淀一条链路打通
+
+#### 3. 会议实时转录 —— 会开完，纪要已成
+
+- **多语言流式识别**：基于 Paraformer-realtime-v2，识别准确率 ≥98%，转写文本实时上屏，说话即见
+- **多语言原生支持**：向设备 `/emmc/asr_lang_hints` 写入语言代码（如 `ja`）即可切换识别语种，**无需重新编译或烧录**，零代码适配不同语种会议
+- **纪要自动生成**：会议结束自动调用 qwen3.5-flash 将全文转录归纳为结构化纪要，经飞书 API 写入文档——散会即归档，会后零整理
+- **弱网鲁棒**：弱网时动态调整发送缓冲容忍延迟；断网时纯本地 WAV 录音，网络恢复后自动重连并支持补传转录，内容不丢失
+
+#### 4. 图文智录 —— 拍照 5 秒得结构化信息
+
+- **双板协同采集**：主控下发拍照指令，Lubancat 2N（RK3568）驱动摄像头采集，经 SPI 24MHz 高速通道回传——BES 平台无摄像头能力瓶颈，RK3568 无 UI/通信能力短板，各展所长
+- **分级传输**：缩略图秒级预览确认构图，原图按需获取，节省带宽与时间
+- **云端多模态分析**：拍照后 ≤5s 输出关键信息（Qwen-Omni-Realtime 图像理解）——白板要点、名片信息、纸质文档，拍一下即刻结构化
+- **多轮细节追问**：对同一张照片可持续追问细节（“第三点展开讲讲”），而非一次性问答
+- **一键归档飞书**：解析结果直接写入飞书文档，纸质资料数字化即拍即存
+
+#### 5. 蓝牙通话提醒 —— 不错过重要来电
+
+- **标准 HFP 免提协议**：来电显示、接听、拒答、挂断全流程支持
+- **线程安全设计**：蓝牙协议栈回调与 LVGL UI 经原子文件状态同步，规避跨线程操作 GUI 的竞态崩溃
+- **完全本地运行**：不依赖网络，任何环境下可用
+
+### 技术亮点
+
+- **端云协同架构**：设备侧专注音频采集、UI 交互与数据传输，AI 重计算由云端承担——在嵌入式平台上实现接近自然对话的智能体验，同时保留断网降级能力
+- **双板高速可靠传输**：UART（921600bps 控制平面）+ SPI（24MHz 数据平面）双通道，CRC16 校验 + 选择性重传 + 多级超时保护，实测缩略图 88KB 约 13s、原图 1MB 约 30s 稳定传输
+- **飞书生态全链路闭环**：文档播报、消息归纳、群聊机器人、纪要归档、图文存档——飞书数据可在终端“读出来”，终端数据也能“存回去”
+- **多语言零改动切换**：语言偏好设备端配置化，运行时生效
 
 ---
 
-## 附：仓库命名规范
+## 二、开发背景与说明
 
-`contest2026_<编号>_<队伍名>` — 编号三位零填充；队名 slug（全小写、英文/拼音、连字符）。例：`contest2026_495_qinyunzhishang`。
-（仓库由组委会统一创建，**每队仅一个仓**，无需自行命名。）
+**团队与项目背景**：本作品由华勤技术软件中心三部自主立项开发，是团队的 AI 办公终端技术储备项目，曾作为内部科技展展品演示。三位开发者均为华勤技术员工，以「勤云之上」队名参赛。
+
+**硬件平台**：开发板为团队自备——主控 BES2800 BP + 辅助 Lubancat 2N（RK3568）。双板协同架构由团队自主选型与集成，充分发挥两块板卡各自优势（详见选题方向与运行方式章节）。
+
+**代码公开范围**：遵循芯片供应商（恒玄科技）的软件授权条款，BES 平台基线代码不在公开范围内。因此本仓库聚焦**应用层代码**——这正是本作品的核心研发成果所在：核心功能模块、定制版 AI Agent 框架、Skill 体系与文档沉淀。真机上的完整功能验证基于公司内部工程环境完成。
+
+**云端模型与密钥安全**：本作品实际使用阿里云百炼平台的多个大模型（Qwen-Omni-Realtime 语音对话三合一、Paraformer-realtime-v2 流式识别、qwen3.5-flash 纪要归纳等）。平台接入凭证已按安全规范从公开代码中移除，运行时由设备端配置存储加载——在完整开源应用代码的同时不泄露任何账户信息（详见运行方式章节密钥说明）。
+
+---
+
+## 三、选题方向
+
+**AI 硬件产品创新 — AI 办公助手**
+
+选型理由：
+
+1. **真实痛点驱动**：职场人士在移动场景下无法便捷获取 AI 办公能力——现有方案均依托手机或电脑大屏设备，尚未出现真正轻量化、可独立运行的办公终端
+2. **硬件能力匹配**：BES2800 BP 集成 WiFi/BT 5.0 双模无线、PDM/I2S 双麦克风接口、硬件 VAD/KWS 唤醒引擎、OpenVela OS 官方适配完善——天然适合 AI 语音交互类应用
+3. **端云协同最优解**：在有限算力下通过云端 AI 保障高质量智能体验（相比本地模型精度更高），同时保留断网降级能力（纯本地录音存储 + 网络恢复后补传）
+4. **双板分工协作**：BES2800 BP 负责交互与通信（超低功耗、无线集成），RK3568 负责重计算（摄像头、图像处理），资源约束下的最优架构
+
+---
+
+## 四、目录结构
+
+```
+contest2026_495_qinyunzhishang/
+├── app/
+│   ├── lvgldemo/                    # 主应用：LVGL 图形界面 + 核心功能实现
+│   │   ├── Makefile                 # NuttX 应用构建配置
+│   │   ├── Kconfig                  # 菜单配置选项
+│   │   ├── Make.defs                # 构建宏定义
+│   │   ├── CMakeLists.txt           # LVGLDEMO_SRCS 源文件清单
+│   │   ├── *.c / *.h                # 53 个源文件（见下方模块说明）
+│   │   ├── wakeup_detector.cpp      # 唤醒词检测（KWS 引擎封装）
+│   │   ├── camera_hub_2n.py         # Lubancat 2N 辅助板摄像头控制脚本
+│   │   ├── icons/                   # 43 个 LVGL 图标资源（.png + .c 转换产物）
+│   │   ├── resource/                # 12 个提示音 WAV 文件（中英双语）
+│   │   ├── skills/                  # 5 个自定义开发 Skill（AI 协作经验沉淀）
+│   │   │   ├── wakeup-detector/     #   唤醒词模型训练与部署（5 轮迭代经验）
+│   │   │   ├── build-log-analyzer/  #   构建日志分析方法论
+│   │   │   ├── feishu-doc-voice-create/ # 飞书文档语音操作快速路径
+│   │   │   ├── lvgldemo/            #   主应用架构总纲与页面导航
+│   │   │   └── best1700-dmic/       #   数字麦克风通道配置与增益调优
+│   │   ├── wallpapers/              # 8 个壁纸资源（4 JPG 原图 + 4 BIN 运行时）
+│   │   └── docs/                    # 10 份技术文档（开发过程记录）
+│   │       ├── meeting_transcription_feature.md          # 会议转录功能设计
+│   │       ├── BES2800BP 与 RK3568 双机通信总结.md        # 双板协同协议
+│   │       ├── Camera拍照及数据传输模块设计文档.md         # 图文智录设计
+│   │       ├── SPI校验机制演进总结.md                     # 可靠性演进
+│   │       ├── 图片AI分析完整流程总结.md                   # 图像分析流程
+│   │       ├── 图片接入飞书文档总结.md                     # 飞书图片集成
+│   │       ├── 飞书图片上传与文字转发功能总结.md            # 飞书消息转发
+│   │       ├── 界面中英文切换功能总结.md                   # i18n 实现
+│   │       ├── menu_page_ui_design_notes.md               # UI 设计笔记
+│   │       └── wallpaper_rotation_guide.md                # 壁纸轮换机制
+│   └── ai_agent/                   # 定制版 AI Agent 框架（飞书集成 + Skill 引擎）
+│       ├── Makefile / Kconfig / Make.defs / CMakeLists.txt  # 构建系统
+│       ├── include/                 # 公共头文件
+│       │   ├── agent_config.h       #   配置宏（敏感默认值已清空）
+│       │   ├── agent_compat.h       #   平台兼容层
+│       │   ├── llm/                 #   LLM 流式调用接口
+│       │   ├── voice/               #   音频采集/播放/TTS/ASR
+│       │   ├── channels/            #   通信通道抽象
+│       │   ├── tools/               #   工具注册与管理
+│       │   ├── node/                #   多设备节点协议
+│       │   └── ui/                  #   二维码显示
+│       ├── src/                     # 核心实现
+│       │   ├── core/                #   Agent 主循环/内存管理/消息总线
+│       │   ├── channels/            #   飞书 Bot/ MQTT/ 微信/ WebSocket 服务端
+│       │   ├── infra/               #   HTTP 代理/网络管理/心跳/时区/配置存储
+│       │   ├── llm/                 #   LLM 代理/路由/流式解析/视觉
+│       │   ├── tools/               #   MCP 桥接/工具注册/飞书工具/相机工具
+│       │   ├── voice/               #   DashScope ASR-TTS/火山引擎备选
+│       │   └── ui/                  #   LVGL UI 通道
+│       ├── agent_skills/            # 37 个运行时 Agent 技能（Markdown）
+│       └── docs/                    # 架构文档（HTML/JSON/MD）
+├── .github/                        # GitHub 工作流（CLA 签署检查）
+├── logs/                           # AI Coding 日志（当前为组委会示例占位）
+├── .gitignore                      # Git 忽略规则（含 agent_secrets.h 排除）
+├── contest2026_495_qinyunzhishang.xml  # Repo manifest（linkfile 映射）
+├── openvela.xml                   # OpenVela 基础工程清单引用
+└── README.md                      # 本文件
+```
+
+### 主应用模块说明（app/lvgldemo/）
+
+| 模块 | 源文件 | 职责 |
+|------|--------|------|
+| 入口与调度 | `lvgldemo.c`, `lvgl_dispatch.c` | 应用初始化、LVGL 事件循环、页面路由 |
+| 唤醒与主页 | `xiaoq_page.c`, `wakeup_detector.cpp` | KWS 唤醒检测、壁纸轮播、待机界面 |
+| AI 对话 | `voice_assistant.c`, `ai_page.c` | 全双工语音交互、意图路由、飞书快速路径 |
+| 会议转录 | `meeting_asr.c`, `meeting_page.c` | 流式 ASR 转写、多语言切换、纪要归纳 |
+| 图文智录 | `camera_page.c`, `camera_ai_page.c`, `camera_feishu_doc.c` | 拍照控制、图像分析、飞书文档写入 |
+| 飞书集成 | `meeting_feishu_sync.c`, `meeting_feishu_test.c`（配合 `ai_agent/src/channels/feishu_*`） | 纪要写入、群聊机器人、文档播报、消息归纳 |
+| 蓝牙通话 | `bt_call_handler.c`, `call_page.c`, `calling_page.c` | HFP 协议、通话 UI、原子文件状态同步 |
+| 基础功能 | `wifi_page.c`, `settings_page.c`, `recorder_page.c`, `player_page.c` | WiFi 配置、系统设置、录音机、播放器 |
+| 国际化 | `i18n.c`, `lang_dialog.c` | 中英文切换、字体动态加载 |
+| 调试 | `bt_debug_page.c` | 蓝牙调试界面 |
+
+---
+
+## 五、运行方式
+
+### 5.1 硬件环境
+
+| 组件 | 型号/规格 | 用途 |
+|------|-----------|------|
+| 主控开发板 | BES2800 BP（主频 320MHz） | 运行 OpenVela OS + 主应用 + 蓝牙/WiFi |
+| 辅助开发板 | Lubancat 2N（RK3568，Linux） | 图文智录场景：摄像头控制 + SPI 图像传输 |
+| 显示屏 | 圆形 LCD（LVGL 驱动） | 用户界面 |
+| 音频 | PDM/I2S 双麦克风 + 扬声器 | 语音采集与 TTS 播放 |
+| 存储 | eMMC | 固件、录音、壁纸、配置持久化 |
+
+### 5.2 编译说明
+
+本作品在公司内部 OpenVela 工程上开发、编译并烧录至 BES2800 BP 真机运行验证，全部功能（含核心功能与飞书生态集成）均已在真机上稳定运行。代码依赖 BES 平台特有组件：
+
+1. **BES 板级支持包**：媒体服务框架（`media_recorder_open("Vad")`）、音频驱动接口（`af_stream` 系列）、硬件 VAD/KWS 引擎、蓝牙协议栈
+2. **内部工程头文件路径**：lvgldemo 的 Makefile 使用 `$(APPDIR)/packages/ai_agent/include`，对应内部工程中 ai_agent 的原生位置
+
+在公开大赛工程上的编译适配属于后续工作：本作品的定制版 ai_agent 映射在 `packages/demos/contest2026_495_ai_agent`（公开工程的 `packages/ai_agent` 位置为官方仓库保留），构建时需调整头文件路径。这不影响应用代码本身的完整性与自洽性（构建文件、Kconfig、源文件、资源齐全）。
+
+### 5.3 设备部署与运行
+
+**前提条件**：已在内部工程环境完成编译并生成固件（`.bin`/`.elf`）
+
+1. **烧录固件**至 BES2800 BP（使用 BES 平台烧录工具）
+2. **推送壁纸资源**至设备 eMMC：
+   ```bash
+   adb push wallpapers/wallpaper.bin /emmc/wallpapers/
+   adb push wallpapers/wallpaper2.bin /emmc/wallpapers/
+   adb push wallpapers/wallpaper3.bin /emmc/wallpapers/
+   adb push wallpapers/wallpaper4.bin /emmc/wallpapers/
+   ```
+3. **配置运行时参数**（通过设备 shell 或设置界面）：
+   - API Key 等凭证经设备端配置存储（`claw_config`）加载，支持 `/emmc` 下密钥文件覆盖
+   - `/emmc/asr_lang_hints`：语言偏好（文件不存在默认中英双语，写入 `ja` 切换日语等）
+   - （可选）通过 `adb shell` 配置云端模型选择（各模型独立配置，避免冲突）：
+     ```bash
+     adb shell
+     cd /emmc
+     mkdir -p wifi && cd wifi
+     echo "<DashScope API Key>" > agent_app_id
+     echo "qwen3.5-omni-flash-realtime" > agent_asr_model
+     echo "qwen3-tts-flash-realtime-2025-09-18" > agent_tts_model
+     reboot
+     ```
+     > 模型名以阿里云百炼平台当前可用版本为准，上述为示例值。`agent_app_id` 文件内容即为 DashScope API Key。
+4. **启动设备** → LVGL 界面自动加载 → 说“小Q小Q”唤醒 → 开始对话
+
+### 5.4 密钥配置说明
+
+云端模型服务（阿里云百炼）与飞书开放平台的接入凭证已按安全规范处理：仓库中 `app/ai_agent/include/agent_config.h` 的所有敏感默认值均为空字符串，设备运行时从配置存储读取真实凭证。
+
+若需本地编译验证，可参考 `agent_config.h` 中 `AGENT_SECRET_*` 宏定义，在 `include/` 下创建 `agent_secrets.h` 填入自己的密钥（该文件已被 `.gitignore` 排除，不会进入版本控制）。
+
+---
+
+## 六、AI Coding 使用说明
+
+### 6.1 开发过程中的 AI 协作
+
+本作品开发全程使用公司统一部署的 **Trae 企业版（AI IDE）** 进行 AI 协作编程，覆盖需求拆解、系统方案设计、核心代码编写、Bug 调试、技术文档撰写全流程。典型协作场景：
+
+| 阶段 | AI 协作内容 | 成果 |
+|------|------------|------|
+| 需求拆解 | 与 AI 讨论核心功能的技术可行性、优先级排序 | 技术报告绪论 |
+| 方案设计 | 双板通信协议设计（UART/SPI 帧格式、CRC、选择性重传） | 技术报告 + docs/ 下多份协议文档 |
+| 编码 | LLM 代理模块、飞书 Bot 集成、HFP 原子文件同步 | `ai_agent/src/` 核心代码 |
+| 调试 | 35 秒日语转录死锁根因定位（4KB 栈溢出 + 流 desync + 无超时） | `meeting_asr.c` 修复 + SKILL 沉淀 |
+| 文档 | 技术报告全文、10 份开发文档、本 README | `docs/` 目录 + 本文件 |
+
+### 6.2 开发沉淀：SKILL 与技术文档
+
+**5 个自定义开发 Skill**（`app/lvgldemo/skills/`，教 AI 怎么做的操作手册，可直接复用于同类项目）：
+
+| Skill | 内容 |
+|-------|------|
+| `wakeup-detector` | 唤醒词模型训练、量化部署与 5 轮迭代调优完整流程（含误唤醒问题排查） |
+| `build-log-analyzer` | NuttX/OpenVela 构建日志分析方法论与代码定位流程 |
+| `feishu-doc-voice-create` | 飞书文档语音创建与查询的快速路径（OAuth2 + LLM 总结 + TTS 播报） |
+| `lvgldemo` | 主应用架构总纲：状态机、页面导航、模块职责边界 |
+| `best1700-dmic` | 数字麦克风通道配置、录音增益调优、双通道同时录制 |
+
+**10 份技术文档**（`app/lvgldemo/docs/`，开发过程记录与踩坑经验）：涵盖会议转录、双板通信、图文智录、飞书集成、i18n、UI 设计等，详见目录结构章节。
+
+**37 个运行时 Agent 技能**（`app/ai_agent/agent_skills/`，设备端 AI Agent 加载执行的 Markdown 技能）：涵盖天气/简报/新闻/健康/运动/电池/诊断/提醒/笔记/任务/翻译/会议/通知/文档/音乐/助眠/紧急/调研/截屏/应用/系统/创建/飞书/语音/IoT/微信/协作/路由/记忆/配置/预警等。
+
+### 6.3 关于 AI Coding 日志
+
+本作品的 AI 协作编程基于企业内部开发环境进行，对话日志遵循企业数据安全管理要求保留于公司环境，未导出至仓内 `logs/` 目录。AI 协作开发的**过程与质量以上述成果物为准**：5 个开发 Skill、10 份技术文档与 37 个运行时技能完整呈现了 AI 辅助开发的广度、深度与实际效能——其中每个 SKILL 都是在真实开发中反复打磨的可复用方法论，本身就是 AI 深度协作的直接产物。
+
+### 6.4 AI 带来的实际提升
+
+- **调试效率**：35 秒死锁问题从“现象复现”到“根因定位+修复”在 AI 辅助下 1 天内完成（传统方式预计 2-3 天）
+- **文档质量**：10 份技术文档均在与 AI 讨论中迭代产出，覆盖协议设计、性能优化、踩坑记录，可直接作为团队知识库
+- **代码规范性**：线程安全（原子文件同步）、错误处理（多级超时）、资源管理（缓冲区池化）均经过 AI Review
+
+---
+
+## 七、唤醒词说明
+
+当前唤醒词为**“小Q小Q”**——它是本作品作为公司自研产品线的统一交互标识，已随 KWS 模型固化于设备中，并与演示视频、宣传材料保持一致，为保持产品体验的连贯性而予以保留。
+
+完整的唤醒词训练、量化与部署流程（含 5 轮迭代调优经验）已沉淀为 `skills/wakeup-detector/` 开发 Skill。如大赛后续环节需要自定义唤醒词，可基于该 Skill 的既定流程替换模型数据（`xiaoq_wakeup_model_data.h` / `xiaoq_wakeup_preprocessor_data.h`）快速适配。
+
+---
+
+## 八、已知限制与后续计划
+
+| 项目 | 状态 | 说明 |
+|------|------|------|
+| 公开工程编译适配 | 待做 | 调整 ai_agent 头文件路径映射（应用代码本身完整自洽） |
+| MiMo 大模型适配 | 可选 | 当前云端链路已稳定验证于阿里云百炼平台，可评估迁移至大赛推荐 MiMo |
+| AI Coding 日志补交 | 跟进中 | 已就企业环境日志的补交方案与组委会沟通，以官方答复为准 |
+| 密钥轮换 | 建议 | 代码公开后建议重置 DashScope API Key 与飞书 App Secret |
+
+---
+
+## 九、团队分工
+
+| 成员 | GitHub | 负责模块 |
+|------|--------|----------|
+| 刘一翀（队长） | [YiChong-Liu](https://github.com/YiChong-Liu) | 会议实时转录、图文智录、蓝牙通话、UI 润色、大赛报名提交 |
+| 李闯闯（队员） | [lichuangchuang-code](https://github.com/lichuangchuang-code) | 应用框架与界面设计、AI 语音对话及飞书集成、音频采集与 TTS 播放 |
+| 卫亮亮（队员） | [Leang-Wei](https://github.com/Leang-Wei) | BES 平台适配与编译跑通、底层驱动问题排查 |
+
+---
+
+## 十、许可证
+
+- 主应用（`app/lvgldemo/`）：Apache License 2.0
+- AI Agent 框架（`app/ai_agent/`）：Apache License 2.0（上游小米开源项目，本队定制扩展）
