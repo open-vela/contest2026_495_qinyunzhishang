@@ -1,4 +1,4 @@
-/* c:\Users\100746713\Desktop\workspace\lvgldemo\meeting_feishu_sync.h */
+/* meeting_feishu_sync.h */
 #ifndef MEETING_FEISHU_SYNC_H
 #define MEETING_FEISHU_SYNC_H
 

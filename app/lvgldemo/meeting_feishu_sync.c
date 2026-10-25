@@ -1,4 +1,4 @@
-/* c:\Users\100746713\Desktop\workspace\lvgldemo\meeting_feishu_sync.c */
+/* meeting_feishu_sync.c */
 #include "meeting_feishu_sync.h"
 #include "tools/tool_feishu_doc.h"
 #include "cJSON.h"
