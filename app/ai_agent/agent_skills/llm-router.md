@@ -18,7 +18,7 @@ Presets: kimi, qwen, deepseek, glm, mimo, openai, claude, openrouter
 
 ### Switch routing profile
 run_shell "router_profile <profile>" where profile is:
-- eco: prefer cheapest backend (mimo-flash, qwen3.5-flash)
+- eco: prefer cheapest backend (mimo-flash, qwen3.8-flash)
 - auto: balance cost and quality based on task complexity
 - premium: prefer highest quality (claude, kimi, openai)
 

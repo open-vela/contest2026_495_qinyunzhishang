@@ -55,7 +55,7 @@ vela> mcp_discover                       # 发现远程工具
 | 预设 | 默认模型 | 说明 |
 |------|----------|------|
 | `kimi` | kimi-k2.5 | Moonshot AI |
-| `qwen` | qwen3.5-flash | 通义千问 |
+| `qwen` | qwen3.8-flash | 通义千问 |
 | `deepseek` | deepseek-chat | DeepSeek |
 | `glm` | glm-4-flash | 智谱 AI |
 | `mimo` | MiMo-v2-Flash | 小米大模型（Flash/Pro/Omni） |
