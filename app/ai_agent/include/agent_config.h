@@ -188,7 +188,7 @@ int agent_tz_offset_sec(void);
 struct tm agent_localtime(void);
 
 /* ── LLM ────────────────────────────────────────────────────── */
-#define AGENT_LLM_DEFAULT_MODEL "qwen3.5-flash"
+#define AGENT_LLM_DEFAULT_MODEL "qwen3.8-flash"
 #define AGENT_LLM_MAX_TOKENS 4096
 #define AGENT_LLM_MAX_TOKENS_OPENAI 16384
 #define AGENT_LLM_API_HOST ""
@@ -228,7 +228,7 @@ struct tm agent_localtime(void);
  * Format: {WorkspaceId}.{region}.maas.aliyuncs.com */
 #define AGENT_LLM_QWEN_HOST "dashscope.aliyuncs.com"
 #define AGENT_LLM_QWEN_PATH "/compatible-mode/v1/chat/completions"
-#define AGENT_LLM_QWEN_MODEL "qwen3.5-flash"
+#define AGENT_LLM_QWEN_MODEL "qwen3.8-flash"
 
 /* ── OpenRouter (unified multi-model gateway) ───────────────── */
 #define AGENT_LLM_OPENROUTER_HOST "openrouter.ai"

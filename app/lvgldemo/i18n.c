@@ -88,11 +88,16 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_LANG_DIALOG_TITLE]   = "语言",
         [STR_LANG_ZH_CN_LABEL]    = "简体中文",
         [STR_LANG_EN_LABEL]       = "English",
+        [STR_LANG_JA_LABEL]       = "日本語",
+        [STR_LANG_DE_LABEL]       = "Deutsch",
+        [STR_LANG_FR_LABEL]       = "Français",
+        [STR_LANG_RU_LABEL]       = "Русский",
         [STR_LANG_CONFIRM]        = "确认",
         [STR_LANG_SWITCH_OK]      = "切换成功",
         [STR_LANG_SWITCH_FAIL]    = "切换失败",
         [STR_LANG_ALREADY_ZH]     = "当前已是简体中文",
         [STR_LANG_ALREADY_EN]     = "当前已是English",
+        [STR_LANG_ALREADY_JA]     = "当前已是日本語",
         /* 拦截提示 */
         [STR_BLOCK_CALL]          = "通话中无法切换语言",
         [STR_BLOCK_RECORDER]      = "录音中无法切换语言",
@@ -193,11 +198,16 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_LANG_DIALOG_TITLE]   = "Language",
         [STR_LANG_ZH_CN_LABEL]    = "简体中文",
         [STR_LANG_EN_LABEL]       = "English",
+        [STR_LANG_JA_LABEL]       = "日本語",
+        [STR_LANG_DE_LABEL]       = "Deutsch",
+        [STR_LANG_FR_LABEL]       = "Français",
+        [STR_LANG_RU_LABEL]       = "Русский",
         [STR_LANG_CONFIRM]        = "Confirm",
         [STR_LANG_SWITCH_OK]      = "Switch success",
         [STR_LANG_SWITCH_FAIL]    = "Failed",
         [STR_LANG_ALREADY_ZH]     = "Already Simplified Chinese",
         [STR_LANG_ALREADY_EN]     = "Already English",
+        [STR_LANG_ALREADY_JA]     = "Already Japanese",
         /* 拦截提示 */
         [STR_BLOCK_CALL]          = "Cannot switch during call",
         [STR_BLOCK_RECORDER]      = "Cannot switch during recording",
@@ -271,9 +281,449 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         /* Calling 页 */
         [STR_CALLING_ON_CALL]     = "On Call",
         [STR_CALLING_DIALING]     = "Dialing...",
-        [STR_CALLING_RINGING]     = "Ringing...",
-        [STR_CALLING_CALLING]     = "Calling...",
-    }
+        [STR_CALLING_RINGING]    = "Ringing...",
+        [STR_CALLING_CALLING]    = "Calling...",
+    },
+    [LANG_JA] = {
+        /* 主界面 */
+        [STR_HOME_DATE_FMT]       = "%d月%d日",
+        [STR_HOME_WEEK_SUN]       = "日曜日",
+        [STR_HOME_WEEK_MON]       = "月曜日",
+        [STR_HOME_WEEK_TUE]       = "火曜日",
+        [STR_HOME_WEEK_WED]       = "水曜日",
+        [STR_HOME_WEEK_THU]       = "木曜日",
+        [STR_HOME_WEEK_FRI]       = "金曜日",
+        [STR_HOME_WEEK_SAT]       = "土曜日",
+        /* 菜单页 */
+        [STR_MENU_AI]             = "音声対話",
+        [STR_MENU_MEETING]        = "会議モード",
+        [STR_MENU_CAMERA]         = "AIカメラ",
+        [STR_MENU_RECORDER]       = "レコーダー",
+        [STR_MENU_PLAYER]         = "プレーヤー",
+        [STR_MENU_SETTINGS]       = "設定",
+        /* 设置页 */
+        [STR_SETTINGS_WIFI]       = "WiFi",
+        [STR_SETTINGS_LANGUAGE]   = "言語",
+        /* 语言选择弹窗 */
+        [STR_LANG_DIALOG_TITLE]   = "言語",
+        [STR_LANG_ZH_CN_LABEL]    = "简体中文",
+        [STR_LANG_EN_LABEL]       = "English",
+        [STR_LANG_JA_LABEL]       = "日本語",
+        [STR_LANG_DE_LABEL]       = "Deutsch",
+        [STR_LANG_FR_LABEL]       = "Français",
+        [STR_LANG_RU_LABEL]       = "Русский",
+        [STR_LANG_CONFIRM]        = "確認",
+        [STR_LANG_SWITCH_OK]      = "切り替え完了",
+        [STR_LANG_SWITCH_FAIL]    = "切り替え失敗",
+        [STR_LANG_ALREADY_ZH]     = "現在簡体中文です",
+        [STR_LANG_ALREADY_EN]     = "現在Englishです",
+        [STR_LANG_ALREADY_JA]     = "現在日本語です",
+        /* 拦截提示 */
+        [STR_BLOCK_CALL]          = "通話中は言語を切替できません",
+        [STR_BLOCK_RECORDER]      = "録音中は言語を切替できません",
+        [STR_BLOCK_MEETING]       = "会議中は言語を切替できません",
+        [STR_BLOCK_OK]            = "OK",
+        /* AI 页 */
+        [STR_AI_TITLE]            = "音声対話",
+        [STR_AI_WAITING]          = "待機中...",
+        [STR_AI_NOT_CONNECTED]    = "AI: 未接続",
+        [STR_AI_CONNECTED]        = "AI: 接続済み",
+        [STR_AI_DISCONNECTED]     = "AI: 未接続",
+        [STR_AI_CONNECTING]       = "接続中...",
+        [STR_AI_SOCKET_ERROR]     = "ソケットエラー",
+        [STR_AI_CONNECT_FAIL]     = "接続失敗",
+        [STR_AI_HANDSHAKE_FAIL]   = "WSハンドシェイク失敗",
+        [STR_AI_LISTENING]        = "音声を聞いています...",
+        [STR_AI_REPLYING]         = "AI応答中...",
+        [STR_AI_NET_CONNECTING]   = "ネットワーク接続中...",
+        [STR_AI_NET_DISCONNECTED] = "ネットワーク未接続",
+        [STR_FEISHU_MSG_FILTER]   = "メッセージ絞込",
+        [STR_FEISHU_CONV]         = "Lark対話",
+        [STR_FEISHU_DOC_QUERY]    = "ドキュメント検索",
+        [STR_AI_WAKEWORD_USER]    = "小Q、小Q!",
+        [STR_AI_WAKEWORD_REPLY]   = "こんにちは、どうぞ！",
+        /* Camera 页 */
+        [STR_CAM_TITLE]           = "AIカメラ",
+        [STR_CAM_READY]           = "準備完了",
+        [STR_CAM_CAPTURING]       = "撮影中...",
+        [STR_CAM_CAPTURE_FAIL]    = "撮影に失敗しました。もう一度お試しください",
+        [STR_CAM_PLEASE_CAPTURE]  = "先に撮影してください",
+        [STR_CAM_AI_STARTING]     = "AI起動中です。もう一度お試しください",
+        [STR_CAM_AI_CONNECTING]   = "AI接続中です。もう一度お試しください",
+        [STR_CAM_KEEP_STEADY]     = "カメラを安定に保ってください...",
+        [STR_CAM_PROCESSING]      = "処理中です。お待ちください...",
+        /* Camera AI 页 */
+        [STR_CAI_TITLE]           = "AIカメラ",
+        [STR_CAI_ANALYZING]       = "画像を分析中...",
+        /* Meeting 页 */
+        [STR_MEET_TITLE_IDLE]     = "会議モード",
+        [STR_MEET_TITLE]          = "会議録",
+        [STR_MEET_RECORDING]      = "会議録音中...",
+        [STR_MEET_RECORDING_PROMPT] = "会議を録音しています。話してください",
+        [STR_MEET_DONE]           = "文字起こし完了。右にスワイプして戻る",
+        [STR_MEET_DONE_FEISHU_FAIL] = "文字起こし完了。Lark保存失敗",
+        [STR_MEET_GENERATING]     = "会議録を生成中です。お待ちください...",
+        [STR_MEET_START_FAIL]     = "文字起こし開始失敗",
+        [STR_MEET_SPEAKER_SYSTEM] = "システム",
+        [STR_MEET_SUMMARY_TITLE]  = "【会議録】",
+        [STR_MEET_STOP_FIRST]     = "先に録音を停止してください",
+        [STR_MEET_PAUSED]         = "一時停止中",
+        [STR_MEET_PAUSE_FAIL]     = "操作に失敗しました。もう一度お試しください",
+        [STR_MEET_CONN_HINT]      = "サーバーに接続中です。話してください...",
+        /* Recorder 页 */
+        [STR_REC_TITLE]           = "レコーダー",
+        [STR_REC_DELETE_TITLE]    = "ファイルを削除しますか？",
+        [STR_REC_DELETE]          = "削除",
+        [STR_REC_CANCEL]          = "キャンセル",
+        [STR_REC_EMPTY]           = "録音がありません",
+        [STR_REC_TOTAL_FMT]       = "合計 %d 件",
+        /* Player 页 */
+        [STR_PLAY_TITLE]          = "プレーヤー",
+        [STR_PLAY_NO_FILE]        = "ファイルなし",
+        [STR_PLAY_EMPTY]          = "音声がありません",
+        [STR_PLAY_ERROR]          = "再生エラー",
+        [STR_PLAY_TOTAL_FMT]      = "合計 %d 件",
+        /* Call 页 */
+        [STR_CALL_INCOMING]       = "着信",
+        [STR_CALL_DECLINE]        = "拒否",
+        [STR_CALL_ACCEPT]         = "応答",
+        [STR_CALL_UNKNOWN]        = "不明な番号",
+        /* Calling 页 */
+        [STR_CALLING_ON_CALL]     = "通話中",
+        [STR_CALLING_DIALING]     = "発信中...",
+        [STR_CALLING_RINGING]    = "呼び出し中...",
+        [STR_CALLING_CALLING]    = "通話中...",
+    },
+    [LANG_DE] = {
+        /* 主界面 */
+        [STR_HOME_DATE_FMT]       = "%d.%d.",
+        [STR_HOME_WEEK_SUN]       = "So",
+        [STR_HOME_WEEK_MON]       = "Mo",
+        [STR_HOME_WEEK_TUE]       = "Di",
+        [STR_HOME_WEEK_WED]       = "Mi",
+        [STR_HOME_WEEK_THU]       = "Do",
+        [STR_HOME_WEEK_FRI]       = "Fr",
+        [STR_HOME_WEEK_SAT]       = "Sa",
+        /* 菜单页 */
+        [STR_MENU_AI]             = "Sprachdialog",
+        [STR_MENU_MEETING]        = "Besprechung",
+        [STR_MENU_CAMERA]         = "KI-Kamera",
+        [STR_MENU_RECORDER]       = "Recorder",
+        [STR_MENU_PLAYER]         = "Medienplayer",
+        [STR_MENU_SETTINGS]       = "Einstellungen",
+        /* 设置页 */
+        [STR_SETTINGS_WIFI]       = "WLAN",
+        [STR_SETTINGS_LANGUAGE]   = "Sprache",
+        /* 语言选择弹窗 */
+        [STR_LANG_DIALOG_TITLE]   = "Sprache",
+        [STR_LANG_ZH_CN_LABEL]    = "简体中文",
+        [STR_LANG_EN_LABEL]       = "English",
+        [STR_LANG_JA_LABEL]       = "日本語",
+        [STR_LANG_DE_LABEL]       = "Deutsch",
+        [STR_LANG_FR_LABEL]       = "Français",
+        [STR_LANG_RU_LABEL]       = "Русский",
+        [STR_LANG_CONFIRM]        = "Bestätigen",
+        [STR_LANG_SWITCH_OK]      = "Sprache gewechselt",
+        [STR_LANG_SWITCH_FAIL]    = "Fehlgeschlagen",
+        [STR_LANG_ALREADY_ZH]     = "Bereits vereinfachtes Chinesisch",
+        [STR_LANG_ALREADY_EN]     = "Bereits Englisch",
+        [STR_LANG_ALREADY_JA]     = "Bereits Japanisch",
+        /* 拦截提示 */
+        [STR_BLOCK_CALL]          = "Wechsel während Anruf nicht möglich",
+        [STR_BLOCK_RECORDER]      = "Wechsel während Aufnahme nicht möglich",
+        [STR_BLOCK_MEETING]       = "Wechsel während Besprechung nicht möglich",
+        [STR_BLOCK_OK]            = "OK",
+        /* AI 页 */
+        [STR_AI_TITLE]            = "Sprachdialog",
+        [STR_AI_WAITING]          = "Warten...",
+        [STR_AI_NOT_CONNECTED]    = "KI: Nicht verbunden",
+        [STR_AI_CONNECTED]        = "KI: Verbunden",
+        [STR_AI_DISCONNECTED]     = "KI: Getrennt",
+        [STR_AI_CONNECTING]       = "Verbinde...",
+        [STR_AI_SOCKET_ERROR]     = "Socket-Fehler",
+        [STR_AI_CONNECT_FAIL]     = "Verbindung fehlgeschlagen",
+        [STR_AI_HANDSHAKE_FAIL]   = "WS-Handshake fehlgeschlagen",
+        [STR_AI_LISTENING]        = "Ich höre zu...",
+        [STR_AI_REPLYING]         = "KI antwortet...",
+        [STR_AI_NET_CONNECTING]   = "Netzwerk wird verbunden...",
+        [STR_AI_NET_DISCONNECTED] = "Netzwerk getrennt",
+        [STR_FEISHU_MSG_FILTER]   = "Nachr.-Filter",
+        [STR_FEISHU_CONV]         = "Lark-Chat",
+        [STR_FEISHU_DOC_QUERY]    = "Dok-Suche",
+        [STR_AI_WAKEWORD_USER]    = "Hi buddy!",
+        [STR_AI_WAKEWORD_REPLY]  = "Hallo, ich höre zu!",
+        /* Camera 页 */
+        [STR_CAM_TITLE]           = "KI-Kamera",
+        [STR_CAM_READY]           = "Bereit",
+        [STR_CAM_CAPTURING]       = "Aufnahme...",
+        [STR_CAM_CAPTURE_FAIL]    = "Aufnahme fehlgeschlagen, erneut versuchen",
+        [STR_CAM_PLEASE_CAPTURE]  = "Bitte zuerst aufnehmen",
+        [STR_CAM_AI_STARTING]     = "KI startet, erneut versuchen",
+        [STR_CAM_AI_CONNECTING]   = "KI verbindet, erneut versuchen",
+        [STR_CAM_KEEP_STEADY]     = "Kamera ruhig halten...",
+        [STR_CAM_PROCESSING]      = "Verarbeitung, bitte warten...",
+        /* Camera AI 页 */
+        [STR_CAI_TITLE]           = "KI-Kamera",
+        [STR_CAI_ANALYZING]       = "Bild wird analysiert...",
+        /* Meeting 页 */
+        [STR_MEET_TITLE_IDLE]     = "Besprechung",
+        [STR_MEET_TITLE]          = "Besprechungsnotizen",
+        [STR_MEET_RECORDING]      = "Aufnahme läuft...",
+        [STR_MEET_RECORDING_PROMPT] = "Aufnahme läuft, bitte sprechen",
+        [STR_MEET_DONE]           = "Fertig, nach rechts wischen",
+        [STR_MEET_DONE_FEISHU_FAIL] = "Fertig, Lark-Speichern fehlgeschlagen",
+        [STR_MEET_GENERATING]     = "Notizen werden erstellt...",
+        [STR_MEET_START_FAIL]     = "Übertragung Start fehlgeschlagen",
+        [STR_MEET_SPEAKER_SYSTEM] = "System",
+        [STR_MEET_SUMMARY_TITLE]  = "【Besprechungsnotizen】",
+        [STR_MEET_STOP_FIRST]     = "Bitte zuerst Aufnahme stoppen",
+        [STR_MEET_PAUSED]         = "Pausiert",
+        [STR_MEET_PAUSE_FAIL]     = "Vorgang fehlgeschlagen, erneut versuchen",
+        [STR_MEET_CONN_HINT]      = "Server wird verbunden, bitte sprechen...",
+        /* Recorder 页 */
+        [STR_REC_TITLE]           = "Recorder",
+        [STR_REC_DELETE_TITLE]    = "Datei löschen?",
+        [STR_REC_DELETE]          = "Löschen",
+        [STR_REC_CANCEL]          = "Abbrechen",
+        [STR_REC_EMPTY]           = "Keine Aufnahmen",
+        [STR_REC_TOTAL_FMT]       = "Gesamt: %d",
+        /* Player 页 */
+        [STR_PLAY_TITLE]          = "Medienplayer",
+        [STR_PLAY_NO_FILE]        = "Keine Datei",
+        [STR_PLAY_EMPTY]          = "Keine Audiodateien",
+        [STR_PLAY_ERROR]          = "Wiedergabefehler",
+        [STR_PLAY_TOTAL_FMT]      = "Gesamt: %d",
+        /* Call 页 */
+        [STR_CALL_INCOMING]       = "Eingehender Anruf",
+        [STR_CALL_DECLINE]        = "Ablehnen",
+        [STR_CALL_ACCEPT]         = "Annehmen",
+        [STR_CALL_UNKNOWN]        = "Unbekannte Nummer",
+        /* Calling 页 */
+        [STR_CALLING_ON_CALL]     = "Im Gespräch",
+        [STR_CALLING_DIALING]     = "Wählt...",
+        [STR_CALLING_RINGING]    = "Klingelt...",
+        [STR_CALLING_CALLING]    = "Verbindet...",
+    },
+    [LANG_FR] = {
+        /* 主界面 */
+        [STR_HOME_DATE_FMT]       = "%d/%d",
+        [STR_HOME_WEEK_SUN]       = "Dim",
+        [STR_HOME_WEEK_MON]       = "Lun",
+        [STR_HOME_WEEK_TUE]       = "Mar",
+        [STR_HOME_WEEK_WED]       = "Mer",
+        [STR_HOME_WEEK_THU]       = "Jeu",
+        [STR_HOME_WEEK_FRI]       = "Ven",
+        [STR_HOME_WEEK_SAT]       = "Sam",
+        /* 菜单页 */
+        [STR_MENU_AI]             = "Chat vocal",
+        [STR_MENU_MEETING]        = "Réunion",
+        [STR_MENU_CAMERA]         = "Caméra IA",
+        [STR_MENU_RECORDER]       = "Enregistreur",
+        [STR_MENU_PLAYER]         = "Lecteur",
+        [STR_MENU_SETTINGS]       = "Paramètres",
+        /* 设置页 */
+        [STR_SETTINGS_WIFI]       = "Wi-Fi",
+        [STR_SETTINGS_LANGUAGE]   = "Langue",
+        /* 语言选择弹窗 */
+        [STR_LANG_DIALOG_TITLE]   = "Langue",
+        [STR_LANG_ZH_CN_LABEL]    = "简体中文",
+        [STR_LANG_EN_LABEL]       = "English",
+        [STR_LANG_JA_LABEL]       = "日本語",
+        [STR_LANG_DE_LABEL]       = "Deutsch",
+        [STR_LANG_FR_LABEL]       = "Français",
+        [STR_LANG_RU_LABEL]       = "Русский",
+        [STR_LANG_CONFIRM]        = "Confirmer",
+        [STR_LANG_SWITCH_OK]      = "Langue modifiée",
+        [STR_LANG_SWITCH_FAIL]    = "Échec",
+        [STR_LANG_ALREADY_ZH]     = "Déjà en chinois simplifié",
+        [STR_LANG_ALREADY_EN]     = "Déjà en anglais",
+        [STR_LANG_ALREADY_JA]     = "Déjà en japonais",
+        /* 拦截提示 */
+        [STR_BLOCK_CALL]          = "Impossible pendant un appel",
+        [STR_BLOCK_RECORDER]      = "Impossible pendant l'enregistrement",
+        [STR_BLOCK_MEETING]       = "Impossible pendant une réunion",
+        [STR_BLOCK_OK]            = "OK",
+        /* AI 页 */
+        [STR_AI_TITLE]            = "Chat vocal",
+        [STR_AI_WAITING]          = "En attente...",
+        [STR_AI_NOT_CONNECTED]    = "IA : Non connectée",
+        [STR_AI_CONNECTED]        = "IA : Connectée",
+        [STR_AI_DISCONNECTED]     = "IA : Déconnectée",
+        [STR_AI_CONNECTING]       = "Connexion...",
+        [STR_AI_SOCKET_ERROR]     = "Erreur socket",
+        [STR_AI_CONNECT_FAIL]     = "Échec de connexion",
+        [STR_AI_HANDSHAKE_FAIL]   = "Échec handshake WS",
+        [STR_AI_LISTENING]        = "J'écoute...",
+        [STR_AI_REPLYING]         = "IA répond...",
+        [STR_AI_NET_CONNECTING]   = "Connexion réseau...",
+        [STR_AI_NET_DISCONNECTED] = "Réseau déconnecté",
+        [STR_FEISHU_MSG_FILTER]   = "Filtre msg",
+        [STR_FEISHU_CONV]         = "Chat Lark",
+        [STR_FEISHU_DOC_QUERY]    = "Rech. doc",
+        [STR_AI_WAKEWORD_USER]    = "Salut l'ami !",
+        [STR_AI_WAKEWORD_REPLY]  = "Bonjour, je vous écoute !",
+        /* Camera 页 */
+        [STR_CAM_TITLE]           = "Caméra IA",
+        [STR_CAM_READY]           = "Prêt",
+        [STR_CAM_CAPTURING]       = "Prise de vue...",
+        [STR_CAM_CAPTURE_FAIL]    = "Échec de prise de vue, réessayez",
+        [STR_CAM_PLEASE_CAPTURE]  = "Veuillez d'abord prendre une photo",
+        [STR_CAM_AI_STARTING]     = "Démarrage IA, réessayez",
+        [STR_CAM_AI_CONNECTING]   = "Connexion IA, réessayez",
+        [STR_CAM_KEEP_STEADY]     = "Gardez l'appareil stable...",
+        [STR_CAM_PROCESSING]      = "Traitement, veuillez patienter...",
+        /* Camera AI 页 */
+        [STR_CAI_TITLE]           = "Caméra IA",
+        [STR_CAI_ANALYZING]       = "Analyse de l'image...",
+        /* Meeting 页 */
+        [STR_MEET_TITLE_IDLE]     = "Réunion",
+        [STR_MEET_TITLE]          = "Compte rendu",
+        [STR_MEET_RECORDING]      = "Enregistrement...",
+        [STR_MEET_RECORDING_PROMPT] = "Enregistrement en cours, parlez",
+        [STR_MEET_DONE]           = "Terminé, balayez vers la droite",
+        [STR_MEET_DONE_FEISHU_FAIL] = "Terminé, échec de sauvegarde Lark",
+        [STR_MEET_GENERATING]     = "Génération du compte rendu...",
+        [STR_MEET_START_FAIL]     = "Échec du démarrage de transcription",
+        [STR_MEET_SPEAKER_SYSTEM] = "Système",
+        [STR_MEET_SUMMARY_TITLE]  = "【Compte rendu】",
+        [STR_MEET_STOP_FIRST]     = "Veuillez d'abord arrêter l'enregistrement",
+        [STR_MEET_PAUSED]         = "En pause",
+        [STR_MEET_PAUSE_FAIL]     = "Échec de l'opération, réessayez",
+        [STR_MEET_CONN_HINT]      = "Connexion au serveur, parlez...",
+        /* Recorder 页 */
+        [STR_REC_TITLE]           = "Enregistreur",
+        [STR_REC_DELETE_TITLE]    = "Supprimer le fichier ?",
+        [STR_REC_DELETE]          = "Supprimer",
+        [STR_REC_CANCEL]          = "Annuler",
+        [STR_REC_EMPTY]           = "Aucun enregistrement",
+        [STR_REC_TOTAL_FMT]       = "Total : %d",
+        /* Player 页 */
+        [STR_PLAY_TITLE]          = "Lecteur",
+        [STR_PLAY_NO_FILE]        = "Aucun fichier",
+        [STR_PLAY_EMPTY]          = "Aucun audio",
+        [STR_PLAY_ERROR]          = "Erreur de lecture",
+        [STR_PLAY_TOTAL_FMT]      = "Total : %d",
+        /* Call 页 */
+        [STR_CALL_INCOMING]       = "Appel entrant",
+        [STR_CALL_DECLINE]        = "Refuser",
+        [STR_CALL_ACCEPT]         = "Accepter",
+        [STR_CALL_UNKNOWN]        = "Numéro inconnu",
+        /* Calling 页 */
+        [STR_CALLING_ON_CALL]     = "En appel",
+        [STR_CALLING_DIALING]     = "Numérotation...",
+        [STR_CALLING_RINGING]    = "Sonnerie...",
+        [STR_CALLING_CALLING]    = "Appel...",
+    },
+    [LANG_RU] = {
+        /* 主界面 */
+        [STR_HOME_DATE_FMT]       = "%d.%d",
+        [STR_HOME_WEEK_SUN]       = "Вс",
+        [STR_HOME_WEEK_MON]       = "Пн",
+        [STR_HOME_WEEK_TUE]       = "Вт",
+        [STR_HOME_WEEK_WED]       = "Ср",
+        [STR_HOME_WEEK_THU]       = "Чт",
+        [STR_HOME_WEEK_FRI]       = "Пт",
+        [STR_HOME_WEEK_SAT]       = "Сб",
+        /* 菜单页 */
+        [STR_MENU_AI]             = "Голосовой чат",
+        [STR_MENU_MEETING]        = "Совещание",
+        [STR_MENU_CAMERA]         = "ИИ-камера",
+        [STR_MENU_RECORDER]       = "Диктофон",
+        [STR_MENU_PLAYER]         = "Плеер",
+        [STR_MENU_SETTINGS]       = "Настройки",
+        /* 设置页 */
+        [STR_SETTINGS_WIFI]       = "Wi-Fi",
+        [STR_SETTINGS_LANGUAGE]   = "Язык",
+        /* 语言选择弹窗 */
+        [STR_LANG_DIALOG_TITLE]   = "Язык",
+        [STR_LANG_ZH_CN_LABEL]    = "简体中文",
+        [STR_LANG_EN_LABEL]       = "English",
+        [STR_LANG_JA_LABEL]       = "日本語",
+        [STR_LANG_DE_LABEL]       = "Deutsch",
+        [STR_LANG_FR_LABEL]       = "Français",
+        [STR_LANG_RU_LABEL]       = "Русский",
+        [STR_LANG_CONFIRM]        = "Подтвердить",
+        [STR_LANG_SWITCH_OK]      = "Язык изменён",
+        [STR_LANG_SWITCH_FAIL]    = "Ошибка",
+        [STR_LANG_ALREADY_ZH]     = "Уже упрощённый китайский",
+        [STR_LANG_ALREADY_EN]     = "Уже английский",
+        [STR_LANG_ALREADY_JA]     = "Уже японский",
+        /* 拦截提示 */
+        [STR_BLOCK_CALL]          = "Нельзя переключить во время звонка",
+        [STR_BLOCK_RECORDER]      = "Нельзя переключить во время записи",
+        [STR_BLOCK_MEETING]       = "Нельзя переключить во время совещания",
+        [STR_BLOCK_OK]            = "OK",
+        /* AI 页 */
+        [STR_AI_TITLE]            = "Голосовой чат",
+        [STR_AI_WAITING]          = "Ожидание...",
+        [STR_AI_NOT_CONNECTED]    = "ИИ: Не подключено",
+        [STR_AI_CONNECTED]        = "ИИ: Подключено",
+        [STR_AI_DISCONNECTED]     = "ИИ: Отключено",
+        [STR_AI_CONNECTING]       = "Подключение...",
+        [STR_AI_SOCKET_ERROR]     = "Ошибка сокета",
+        [STR_AI_CONNECT_FAIL]     = "Не удалось подключиться",
+        [STR_AI_HANDSHAKE_FAIL]   = "Сбой рукопожатия WS",
+        [STR_AI_LISTENING]        = "Слушаю...",
+        [STR_AI_REPLYING]         = "ИИ отвечает...",
+        [STR_AI_NET_CONNECTING]   = "Подключение к сети...",
+        [STR_AI_NET_DISCONNECTED] = "Сеть отключена",
+        [STR_FEISHU_MSG_FILTER]   = "Фильтр сообщ.",
+        [STR_FEISHU_CONV]         = "Чат Lark",
+        [STR_FEISHU_DOC_QUERY]    = "Поиск док.",
+        [STR_AI_WAKEWORD_USER]    = "Привет, друг!",
+        [STR_AI_WAKEWORD_REPLY]  = "Здравствуйте, я вас слушаю!",
+        /* Camera 页 */
+        [STR_CAM_TITLE]           = "ИИ-камера",
+        [STR_CAM_READY]           = "Готово",
+        [STR_CAM_CAPTURING]       = "Съёмка...",
+        [STR_CAM_CAPTURE_FAIL]    = "Не удалось снять, попробуйте ещё раз",
+        [STR_CAM_PLEASE_CAPTURE]  = "Сначала сделайте снимок",
+        [STR_CAM_AI_STARTING]     = "ИИ запускается, попробуйте ещё раз",
+        [STR_CAM_AI_CONNECTING]   = "ИИ подключается, попробуйте ещё раз",
+        [STR_CAM_KEEP_STEADY]     = "Держите камеру неподвижно...",
+        [STR_CAM_PROCESSING]      = "Обработка, подождите...",
+        /* Camera AI 页 */
+        [STR_CAI_TITLE]           = "ИИ-камера",
+        [STR_CAI_ANALYZING]       = "Анализ изображения...",
+        /* Meeting 页 */
+        [STR_MEET_TITLE_IDLE]     = "Совещание",
+        [STR_MEET_TITLE]          = "Протокол совещания",
+        [STR_MEET_RECORDING]      = "Идёт запись...",
+        [STR_MEET_RECORDING_PROMPT] = "Идёт запись, говорите",
+        [STR_MEET_DONE]           = "Готово. Смахните вправо",
+        [STR_MEET_DONE_FEISHU_FAIL] = "Готово. Не удалось сохранить в Lark",
+        [STR_MEET_GENERATING]     = "Создание протокола...",
+        [STR_MEET_START_FAIL]     = "Не удалось запустить расшифровку",
+        [STR_MEET_SPEAKER_SYSTEM] = "Система",
+        [STR_MEET_SUMMARY_TITLE]  = "【Протокол совещания】",
+        [STR_MEET_STOP_FIRST]     = "Сначала остановите запись",
+        [STR_MEET_PAUSED]         = "Пауза",
+        [STR_MEET_PAUSE_FAIL]     = "Ошибка операции, попробуйте ещё раз",
+        [STR_MEET_CONN_HINT]      = "Подключение к серверу, говорите...",
+        /* Recorder 页 */
+        [STR_REC_TITLE]           = "Диктофон",
+        [STR_REC_DELETE_TITLE]    = "Удалить файл?",
+        [STR_REC_DELETE]          = "Удалить",
+        [STR_REC_CANCEL]          = "Отмена",
+        [STR_REC_EMPTY]           = "Нет записей",
+        [STR_REC_TOTAL_FMT]       = "Всего: %d",
+        /* Player 页 */
+        [STR_PLAY_TITLE]          = "Плеер",
+        [STR_PLAY_NO_FILE]        = "Нет файла",
+        [STR_PLAY_EMPTY]          = "Нет аудио",
+        [STR_PLAY_ERROR]          = "Ошибка воспроизведения",
+        [STR_PLAY_TOTAL_FMT]      = "Всего: %d",
+        /* Call 页 */
+        [STR_CALL_INCOMING]       = "Входящий звонок",
+        [STR_CALL_DECLINE]        = "Отклонить",
+        [STR_CALL_ACCEPT]         = "Принять",
+        [STR_CALL_UNKNOWN]        = "Неизвестный номер",
+        /* Calling 页 */
+        [STR_CALLING_ON_CALL]     = "Разговор",
+        [STR_CALLING_DIALING]     = "Набор номера...",
+        [STR_CALLING_RINGING]    = "Гудки...",
+        [STR_CALLING_CALLING]    = "Вызов...",
+    },
 };
 
 /* 提示音路径表（两套语言，编译期确定，存 rodata） */
@@ -291,8 +741,80 @@ static const char *const s_prompts[LANG_COUNT][PROMPT_COUNT] = {
         [PROMPT_WIFI_YI_LIANJIE]   = "/emmc/xiaoqxiaoq/wifi_connected.wav",
         [PROMPT_WIFI_YI_DUANKAI]   = "/emmc/xiaoqxiaoq/wifi_disconnected.wav",
         [PROMPT_SILENCE_TIMEOUT]   = "/emmc/xiaoqxiaoq/no_problem_ill_step_back.wav",
+    },
+    [LANG_JA] = {
+        [PROMPT_NIHAO_QING_SHUO]   = "/emmc/xiaoqxiaoq/hello_go_ahead_ja.wav",
+        [PROMPT_QING_LIANJIE_WIFI] = "/emmc/xiaoqxiaoq/connect_to_wifi_please_ja.wav",
+        [PROMPT_WIFI_YI_LIANJIE]   = "/emmc/xiaoqxiaoq/wifi_connected_ja.wav",
+        [PROMPT_WIFI_YI_DUANKAI]   = "/emmc/xiaoqxiaoq/wifi_disconnected_ja.wav",
+        [PROMPT_SILENCE_TIMEOUT]   = "/emmc/xiaoqxiaoq/no_problem_ill_step_back_ja.wav",
+    },
+    [LANG_DE] = {
+        [PROMPT_NIHAO_QING_SHUO]   = "/emmc/xiaoqxiaoq/hello_go_ahead_de.wav",
+        [PROMPT_QING_LIANJIE_WIFI] = "/emmc/xiaoqxiaoq/connect_to_wifi_please_de.wav",
+        [PROMPT_WIFI_YI_LIANJIE]   = "/emmc/xiaoqxiaoq/wifi_connected_de.wav",
+        [PROMPT_WIFI_YI_DUANKAI]   = "/emmc/xiaoqxiaoq/wifi_disconnected_de.wav",
+        [PROMPT_SILENCE_TIMEOUT]   = "/emmc/xiaoqxiaoq/no_problem_ill_step_back_de.wav",
+    },
+    [LANG_FR] = {
+        [PROMPT_NIHAO_QING_SHUO]   = "/emmc/xiaoqxiaoq/hello_go_ahead_fr.wav",
+        [PROMPT_QING_LIANJIE_WIFI] = "/emmc/xiaoqxiaoq/connect_to_wifi_please_fr.wav",
+        [PROMPT_WIFI_YI_LIANJIE]   = "/emmc/xiaoqxiaoq/wifi_connected_fr.wav",
+        [PROMPT_WIFI_YI_DUANKAI]   = "/emmc/xiaoqxiaoq/wifi_disconnected_fr.wav",
+        [PROMPT_SILENCE_TIMEOUT]   = "/emmc/xiaoqxiaoq/no_problem_ill_step_back_fr.wav",
+    },
+    [LANG_RU] = {
+        [PROMPT_NIHAO_QING_SHUO]   = "/emmc/xiaoqxiaoq/hello_go_ahead_ru.wav",
+        [PROMPT_QING_LIANJIE_WIFI] = "/emmc/xiaoqxiaoq/connect_to_wifi_please_ru.wav",
+        [PROMPT_WIFI_YI_LIANJIE]   = "/emmc/xiaoqxiaoq/wifi_connected_ru.wav",
+        [PROMPT_WIFI_YI_DUANKAI]   = "/emmc/xiaoqxiaoq/wifi_disconnected_ru.wav",
+        [PROMPT_SILENCE_TIMEOUT]   = "/emmc/xiaoqxiaoq/no_problem_ill_step_back_ru.wav",
     }
 };
+
+/* 语言↔持久化编码映射（写入 /emmc/lang_config 的字符串） */
+static const char *i18n_lang_code(lang_t lang)
+{
+    switch (lang)
+    {
+    case LANG_EN:  return "en";
+    case LANG_JA:  return "ja";
+    case LANG_DE:  return "de";
+    case LANG_FR:  return "fr";
+    case LANG_RU:  return "ru";
+    case LANG_ZH_CN:
+    default:       return "zh";
+    }
+}
+
+/* 语言→AI 回复语言（写入 session instructions 的 Reply in {LANG}）
+ * 日语用 "Japanese"（dashscope_asr.h 约定形如 "Chinese"/"English"） */
+const char *i18n_lang_to_ai_reply(lang_t lang)
+{
+    switch (lang)
+    {
+    case LANG_EN:  return "english";
+    case LANG_JA:  return "japanese";
+    case LANG_DE:  return "german";
+    case LANG_FR:  return "french";
+    case LANG_RU:  return "russian";
+    case LANG_ZH_CN:
+    default:       return "chinese";
+    }
+}
+
+/* 语言→TTS 音色。Cherry 原生支持日英等 10 语种（Qwen-TTS 音色列表），
+ * 故日语沿用中文音色 Cherry；仅英文切换 Serena 与中文区分。 */
+const char *i18n_lang_to_tts_voice(lang_t lang)
+{
+    switch (lang)
+    {
+    case LANG_EN:  return AGENT_DASHSCOPE_TTS_VOICE_EN;
+    case LANG_JA:
+    case LANG_ZH_CN:
+    default:       return AGENT_DASHSCOPE_TTS_VOICE;
+    }
+}
 
 /* 从 /emmc/lang_config 读取语言配置 */
 static lang_t i18n_load_lang_from_file(void)
@@ -313,10 +835,26 @@ static lang_t i18n_load_lang_from_file(void)
         return LANG_ZH_CN;
     }
 
-    /* 简单文本格式："en" 或 "zh"，损坏内容默认中文 */
+    /* 简单文本格式："en"/"ja" 或 "zh"，损坏内容默认中文 */
     if (strncmp(buf, "en", 2) == 0)
     {
         return LANG_EN;
+    }
+    if (strncmp(buf, "ja", 2) == 0)
+    {
+        return LANG_JA;
+    }
+    if (strncmp(buf, "de", 2) == 0)
+    {
+        return LANG_DE;
+    }
+    if (strncmp(buf, "fr", 2) == 0)
+    {
+        return LANG_FR;
+    }
+    if (strncmp(buf, "ru", 2) == 0)
+    {
+        return LANG_RU;
     }
 
     return LANG_ZH_CN;
@@ -359,14 +897,14 @@ void i18n_init(void)
 {
     g_current_lang = i18n_load_lang_from_file();
     syslog(LOG_INFO, "[i18n] init, lang=%s\n",
-           g_current_lang == LANG_EN ? "en" : "zh");
+           i18n_lang_code(g_current_lang));
     /* 同步底层 AI 回复语言（仅设置全局变量，不依赖 dashscope 连接）
      * 开机首次连接 session.update 即用此语言。
      * 注意：dashscope_tts_set_voice 不在此处调用，因为 ai_agent 进程
      *       尚未启动（ws_pool/tts_cache 未初始化），改由 voice_channel_init
      *       末尾根据 /emmc/lang_config 应用音色。 */
     dashscope_asr_set_image_reply_lang(
-        g_current_lang == LANG_EN ? "english" : "chinese");
+        i18n_lang_to_ai_reply(g_current_lang));
     /* 不预加载字体，懒加载 */
 }
 
@@ -376,7 +914,12 @@ const char *i18n_get(str_id_t id)
     {
         return "";
     }
-    return s_strings[g_current_lang][id];
+    const char *s = s_strings[g_current_lang][id];
+    if (s == NULL)
+    {
+        s = s_strings[LANG_EN][id];
+    }
+    return s ? s : "";
 }
 
 const char *i18n_get_prompt(prompt_id_t id)
@@ -385,7 +928,12 @@ const char *i18n_get_prompt(prompt_id_t id)
     {
         return "";
     }
-    return s_prompts[g_current_lang][id];
+    const char *s = s_prompts[g_current_lang][id];
+    if (s == NULL)
+    {
+        s = s_prompts[LANG_EN][id];
+    }
+    return s ? s : "";
 }
 
 lang_t i18n_get_lang(void)
@@ -411,7 +959,7 @@ bool i18n_set_lang(lang_t lang)
         syslog(LOG_ERR, "[i18n] failed to write %s\n", LANG_CONFIG_FILE);
         return false;
     }
-    const char *data = (lang == LANG_EN) ? "en" : "zh";
+    const char *data = i18n_lang_code(lang);
     write(fd, data, 2);
     close(fd);
 
@@ -422,11 +970,8 @@ bool i18n_set_lang(lang_t lang)
      * 普通语音对话请求刷新会话指令，若 WS 在线则主循环发 session.update，
      * 若 WS 离线则标志丢失，下次重连 dashscope_asr_stream_open 用新语言兑底。
      * 普通 TTS 每次合成新建连接，更新 s_voice 后下次合成自动用新音色。 */
-    dashscope_asr_set_image_reply_lang(
-        lang == LANG_EN ? "english" : "chinese");
-    dashscope_tts_set_voice(
-        lang == LANG_EN ? AGENT_DASHSCOPE_TTS_VOICE_EN
-                        : AGENT_DASHSCOPE_TTS_VOICE);
+    dashscope_asr_set_image_reply_lang(i18n_lang_to_ai_reply(lang));
+    dashscope_tts_set_voice(i18n_lang_to_tts_voice(lang));
     voice_assistant_request_lang_refresh();
 
     /* 3. 语言变更后的字体处理：
@@ -435,7 +980,7 @@ bool i18n_set_lang(lang_t lang)
      *      原因：若当前页面（如 lang_screen）的 label 正在使用该字体，
      *      删除后 LVGL 渲染会访问已释放内存 → Usage Fault (PC=0x00000000)
      *      字体资源会在页面重建时由各页面自行管理 */
-    if (lang == LANG_ZH_CN)
+    if (lang == LANG_ZH_CN || lang == LANG_JA)
     {
         i18n_ensure_cjk_font();
     }
@@ -500,7 +1045,9 @@ void i18n_apply_font_small(lv_obj_t *obj)
         return;
     }
 
-    if (g_current_lang == LANG_ZH_CN)
+    /* 德法俄同用 MiSans：montserrat 无西里尔/变音符字形，
+     * 且探针阶段未翻译条目回落英文亦需 MiSans 渲染 */
+    if (g_current_lang != LANG_EN)
     {
         i18n_ensure_cjk_font();
         if (s_cjk_font_small)

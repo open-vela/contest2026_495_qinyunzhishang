@@ -756,6 +756,13 @@ static void *meeting_asr_thread_func(void *arg)
                     "for daily conversation, summarize the discussion topics and key information. Keep within 200 words\n"
                     "Important: Always generate a meaningful summary regardless of content type. "
                     "Never say 'unable to generate' or 'no substantive content'. Output the two parts directly.";
+            } else if (current_lang == LANG_JA) {
+                summary_prompt =
+                    "以下の音声文字起こしテキストから簡潔な内容要約を生成してください。この録音は仕事の会議、日常会話、学習記録など、あらゆる種類の音声の可能性があります。\n"
+                    "出力形式の要件（テキストのみ。*、#、- などのマークダウン記号は使用しない）：\n"
+                    "内容テーマ：この録音の核心的内容や主題を一文で概括してください（詩の朗読なら詩の名前を、雑談なら話題を概括）\n"
+                    "内容総括：内容の種類に応じて柔軟に要約してください。仕事・学習関係なら要点と結論を抽出し、詩・朗読関係なら作品情報と主な内容を簡潔に説明し、日常会話なら議論の話題と重要な情報を概括してください。200字以内にしてください\n"
+                    "重要：内容の種類にかかわらず、意味のある要約を必ず生成してください。'生成できません'や'実質的な内容がありません'とは言わないでください。上記の2つの部分を直接出力してください。";
             } else {
                 summary_prompt =
                     "请根据以下语音转写文本生成简洁的内容摘要。这段录音可能是工作会议、日常对话、学习记录或任何类型的语音内容。\n"
@@ -815,6 +822,10 @@ static void *meeting_asr_thread_func(void *arg)
                         title_topic = "Content Topic and Summary";
                         label_time = "Meeting Time:";
                         title_transcript = "Full Transcription";
+                    } else if (current_lang == LANG_JA) {
+                        title_topic = "会議のテーマと内容要約";
+                        label_time = "会議時間：";
+                        title_transcript = "完全な文字起こし";
                     } else {
                         title_topic = "会议主题和内容总结";
                         label_time = "会议时间：";

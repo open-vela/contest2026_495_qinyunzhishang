@@ -19,6 +19,10 @@ extern "C" {
 typedef enum {
     LANG_ZH_CN = 0,
     LANG_EN,
+    LANG_JA,
+    LANG_DE,
+    LANG_FR,
+    LANG_RU,
     LANG_COUNT
 } lang_t;
 
@@ -50,11 +54,16 @@ typedef enum {
     STR_LANG_DIALOG_TITLE,      /* 选择语言 / Select Language */
     STR_LANG_ZH_CN_LABEL,       /* 简体中文 */
     STR_LANG_EN_LABEL,          /* English */
+    STR_LANG_JA_LABEL,          /* 日本語 */
+    STR_LANG_DE_LABEL,          /* Deutsch */
+    STR_LANG_FR_LABEL,          /* Français */
+    STR_LANG_RU_LABEL,          /* Русский */
     STR_LANG_CONFIRM,           /* 确认 / Confirm */
     STR_LANG_SWITCH_OK,         /* 切换成功 / Switched */
     STR_LANG_SWITCH_FAIL,       /* 切换失败 / Failed */
     STR_LANG_ALREADY_ZH,        /* 当前已是简体中文 / Already Simplified Chinese */
     STR_LANG_ALREADY_EN,        /* 当前已是English / Already English */
+    STR_LANG_ALREADY_JA,        /* 当前已是日本語 / Already Japanese */
 
     /* 拦截提示 */
     STR_BLOCK_CALL,             /* 通话中无法切换语言 / Cannot switch during call */
@@ -102,7 +111,7 @@ typedef enum {
     STR_MEET_TITLE,             /* 会议记录 / Meeting Notes */
     STR_MEET_RECORDING,         /* 会议录音中... / Recording... */
     STR_MEET_RECORDING_PROMPT,  /* 会议录音中，请开始发言 / Recording, please speak */
-    STR_MEET_DONE,              /* 转写完成，左滑返回 / Done, swipe left */
+    STR_MEET_DONE,             /* 转写完成，右滑返回 / Done, swipe right */
     STR_MEET_DONE_FEISHU_FAIL,  /* 转写完成，飞书保存失败 / Done, Feishu save failed */
     STR_MEET_GENERATING,        /* 正在生成会议记录，请稍候... / Generating notes... */
     STR_MEET_START_FAIL,        /* 转写启动失败 / Transcription start failed */

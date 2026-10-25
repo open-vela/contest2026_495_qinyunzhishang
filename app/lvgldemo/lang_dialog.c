@@ -43,6 +43,7 @@ extern lv_obj_t *camera_screen;  /* 全局屏幕指针，定义于 lvgldemo.c */
 #define LANG_BTN_AREA_BOT    50      /* 底部按钮区距底部50px（上提20px） */
 #define LANG_BTN_H           42      /* 按钮高度 */
 #define LANG_BTN_GAP         20      /* 两按钮间距20px */
+#define LANG_LIST_H          222     /* 选项列表可视高度：y=70起，下沿避开结果区(y=300) */
 
 /* 颜色定义 */
 #define COLOR_TEXT_WHITE     0xFFFFFF
@@ -55,6 +56,7 @@ extern lv_obj_t *camera_screen;  /* 全局屏幕指针，定义于 lvgldemo.c */
 /* ===== 页面对象 ===== */
 static lv_obj_t *lang_screen       = NULL;
 static lv_obj_t *lang_title_label  = NULL;
+static lv_obj_t *lang_confirm_lbl  = NULL;  /* 确认按钮文字（切语言后同步刷新） */
 static lv_obj_t *lang_time_label   = NULL;
 static lv_obj_t *lang_result_area  = NULL;  /* 结果提示容器 */
 static lv_obj_t *lang_result_lbl   = NULL;  /* 结果文字 */
@@ -76,6 +78,10 @@ static lv_obj_t *s_block_modal = NULL;
 /* ===== 圆点指示器对象 ===== */
 static lv_obj_t *s_radio_zh = NULL;
 static lv_obj_t *s_radio_en = NULL;
+static lv_obj_t *s_radio_ja = NULL;
+static lv_obj_t *s_radio_de = NULL;
+static lv_obj_t *s_radio_fr = NULL;
+static lv_obj_t *s_radio_ru = NULL;
 
 /* ===== 前向声明 ===== */
 static void lang_option_update_visual(void);
@@ -117,6 +123,38 @@ static void lang_option_update_visual(void)
                 : lv_color_hex(COLOR_RADIO_UNSEL), 0);
         lv_obj_set_style_bg_opa(s_radio_en, LV_OPA_COVER, 0);
     }
+    if (s_radio_ja)
+    {
+        bool sel = (s_selected_lang == LANG_JA);
+        lv_obj_set_style_bg_color(s_radio_ja,
+            sel ? lv_color_hex(COLOR_RADIO_SEL)
+                : lv_color_hex(COLOR_RADIO_UNSEL), 0);
+        lv_obj_set_style_bg_opa(s_radio_ja, LV_OPA_COVER, 0);
+    }
+    if (s_radio_de)
+    {
+        bool sel = (s_selected_lang == LANG_DE);
+        lv_obj_set_style_bg_color(s_radio_de,
+            sel ? lv_color_hex(COLOR_RADIO_SEL)
+                : lv_color_hex(COLOR_RADIO_UNSEL), 0);
+        lv_obj_set_style_bg_opa(s_radio_de, LV_OPA_COVER, 0);
+    }
+    if (s_radio_fr)
+    {
+        bool sel = (s_selected_lang == LANG_FR);
+        lv_obj_set_style_bg_color(s_radio_fr,
+            sel ? lv_color_hex(COLOR_RADIO_SEL)
+                : lv_color_hex(COLOR_RADIO_UNSEL), 0);
+        lv_obj_set_style_bg_opa(s_radio_fr, LV_OPA_COVER, 0);
+    }
+    if (s_radio_ru)
+    {
+        bool sel = (s_selected_lang == LANG_RU);
+        lv_obj_set_style_bg_color(s_radio_ru,
+            sel ? lv_color_hex(COLOR_RADIO_SEL)
+                : lv_color_hex(COLOR_RADIO_UNSEL), 0);
+        lv_obj_set_style_bg_opa(s_radio_ru, LV_OPA_COVER, 0);
+    }
 }
 
 /****************************************************************************
@@ -127,7 +165,7 @@ static void create_lang_option_row(lv_obj_t *parent, int index,
                                     const char *text, lang_t lang,
                                     lv_obj_t **out_radio)
 {
-    int y = LANG_OPTION_START_Y + index * (LANG_OPTION_H + LANG_OPTION_GAP);
+    int y = index * (LANG_OPTION_H + LANG_OPTION_GAP);
 
     /* 行容器 */
     lv_obj_t *row = lv_obj_create(parent);
@@ -245,9 +283,14 @@ static void lang_do_confirm(void)
     /* 若未改变：提示当前已是该语言，无需重复设置 */
     if (target == current)
     {
-        const char *hint = (target == LANG_ZH_CN)
-            ? i18n_get(STR_LANG_ALREADY_ZH)
-            : i18n_get(STR_LANG_ALREADY_EN);
+        const char *hint;
+        switch (target)
+        {
+        case LANG_ZH_CN: hint = i18n_get(STR_LANG_ALREADY_ZH); break;
+        case LANG_JA:    hint = i18n_get(STR_LANG_ALREADY_JA); break;
+        case LANG_EN:
+        default:         hint = i18n_get(STR_LANG_ALREADY_EN); break;
+        }
         lang_show_inline_result(true, hint);
         return;
     }
@@ -284,6 +327,19 @@ static void lang_do_confirm(void)
     if (ok)
     {
         s_language_changed = true;
+
+        /* 标题与确认按钮随新语言同步刷新。
+         * 字体无需重设：i18n_apply_font 统一用 s_cjk_font（MiSans），
+         * 且 i18n_set_lang 不删除该字体，指针始终有效。 */
+        if (lang_title_label)
+        {
+            lv_label_set_text(lang_title_label,
+                              i18n_get(STR_LANG_DIALOG_TITLE));
+        }
+        if (lang_confirm_lbl)
+        {
+            lv_label_set_text(lang_confirm_lbl, i18n_get(STR_LANG_CONFIRM));
+        }
     }
 
     /* 4. 解除防抖（允许再次切换） */
@@ -336,6 +392,7 @@ static void create_bottom_buttons(lv_obj_t *parent)
     i18n_apply_font(confirm_lbl);
     lv_obj_set_style_text_color(confirm_lbl, lv_color_hex(COLOR_TEXT_WHITE), 0);
     lv_obj_center(confirm_lbl);
+    lang_confirm_lbl = confirm_lbl;
 }
 
 /****************************************************************************
@@ -577,11 +634,16 @@ void lang_page_deinit(void)
 
     /* 清理引用 */
     lang_title_label = NULL;
+    lang_confirm_lbl = NULL;
     lang_time_label = NULL;
     lang_result_area = NULL;
     lang_result_lbl = NULL;
     s_radio_zh = NULL;
     s_radio_en = NULL;
+    s_radio_ja = NULL;
+    s_radio_de = NULL;
+    s_radio_fr = NULL;
+    s_radio_ru = NULL;
 
     /* 销毁屏幕 */
     if (lang_screen)
@@ -669,11 +731,32 @@ void lang_page_enter(void)
     lv_obj_set_style_text_color(lang_time_label, lv_color_hex(COLOR_TEXT_WHITE), 0);
     lv_obj_align(lang_time_label, LV_ALIGN_RIGHT_MID, -10, 0);
 
-    /* ===== 2. 语言选项列表（圆点 + 文字） ===== */
-    create_lang_option_row(lang_screen, 0, i18n_get(STR_LANG_ZH_CN_LABEL),
+    /* ===== 2. 语言选项列表（滚动容器，6 行超出圆屏可视区，下滑查看） ===== */
+    lv_obj_t *list_cont = lv_obj_create(lang_screen);
+    lv_obj_remove_style_all(list_cont);
+    lv_obj_set_size(list_cont, LV_HOR_RES, LANG_LIST_H);
+    lv_obj_align(list_cont, LV_ALIGN_TOP_MID, 0, LANG_OPTION_START_Y);
+    lv_obj_set_style_bg_opa(list_cont, LV_OPA_TRANSP, 0);
+    lv_obj_set_style_border_width(list_cont, 0, 0);
+    lv_obj_set_style_pad_all(list_cont, 0, 0);
+    lv_obj_set_scroll_dir(list_cont, LV_DIR_VER);
+    lv_obj_set_scrollbar_mode(list_cont, LV_SCROLLBAR_MODE_OFF);
+    lv_obj_clear_flag(list_cont, LV_OBJ_FLAG_SCROLL_ELASTIC);
+    lv_obj_clear_flag(list_cont, LV_OBJ_FLAG_SCROLL_MOMENTUM);
+    lv_obj_add_flag(list_cont, LV_OBJ_FLAG_GESTURE_BUBBLE);
+
+    create_lang_option_row(list_cont, 0, i18n_get(STR_LANG_ZH_CN_LABEL),
                            LANG_ZH_CN, &s_radio_zh);
-    create_lang_option_row(lang_screen, 1, i18n_get(STR_LANG_EN_LABEL),
+    create_lang_option_row(list_cont, 1, i18n_get(STR_LANG_EN_LABEL),
                            LANG_EN, &s_radio_en);
+    create_lang_option_row(list_cont, 2, i18n_get(STR_LANG_JA_LABEL),
+                           LANG_JA, &s_radio_ja);
+    create_lang_option_row(list_cont, 3, i18n_get(STR_LANG_DE_LABEL),
+                           LANG_DE, &s_radio_de);
+    create_lang_option_row(list_cont, 4, i18n_get(STR_LANG_FR_LABEL),
+                           LANG_FR, &s_radio_fr);
+    create_lang_option_row(list_cont, 5, i18n_get(STR_LANG_RU_LABEL),
+                           LANG_RU, &s_radio_ru);
 
     /* 设置初始选中状态 */
     lang_option_update_visual();

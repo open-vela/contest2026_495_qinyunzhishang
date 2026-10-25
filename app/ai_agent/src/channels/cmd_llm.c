@@ -45,7 +45,7 @@ static const router_preset_t g_router_presets[] = {
     /* Use workspace-dedicated domain for lower TLS handshake latency.
      * See agent_config.h AGENT_LLM_QWEN_HOST for rationale. */
     { "qwen", "dashscope.aliyuncs.com",
-        "/compatible-mode/v1/chat/completions", "qwen3.5-flash", 1 },
+        "/compatible-mode/v1/chat/completions", "qwen3.8-flash", 1 },
     { "glm", "open.bigmodel.cn", "/api/paas/v4/chat/completions", "glm-4-flash", 1 },
     { "openai", "api.openai.com", "/v1/chat/completions", "gpt-4o", 3 },
     { "claude", "api.anthropic.com", "/v1/messages", "claude-sonnet-4-20250514", 3 },
@@ -66,7 +66,7 @@ void cmd_set_llm(int argc, char** argv)
                "\n"
                "Presets:\n"
                "  kimi     - api.moonshot.cn  (kimi-k2.5)\n"
-               "  qwen     - dashscope.aliyuncs.com  (qwen3.5-flash)\n"
+               "  qwen     - dashscope.aliyuncs.com  (qwen3.8-flash)\n"
                "  deepseek - api.deepseek.com  (deepseek-chat)\n"
                "  glm      - open.bigmodel.cn  (glm-4-flash)\n"
                "  openai   - api.openai.com  (gpt-4o)\n"

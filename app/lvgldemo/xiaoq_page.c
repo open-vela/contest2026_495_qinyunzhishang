@@ -201,14 +201,21 @@ static void homepage_update_datetime(void)
     /* 使用 agent_localtime() 获取正确的本地时间（NuttX localtime_r 不处理时区） */
     time_info = agent_localtime();
 
-    /* 更新日期：中文 "7月21日"，英文 "Jul 21" */
-    if (i18n_get_lang() == LANG_ZH_CN) {
-        snprintf(buf, sizeof(buf), "%d月%d日",
-                 time_info.tm_mon + 1, time_info.tm_mday);
-    } else {
+    /* 更新日期：中文/日粤语系用 "7月21日"（日文同构），英文 "Jul 21"，
+     * 德法俄用"日.月"欧式格式（格式串取自各自语言表） */
+    lang_t cur_lang = i18n_get_lang();
+    if (cur_lang == LANG_EN) {
         /* 美式格式：月 日，如 "Jul 21" */
         snprintf(buf, sizeof(buf), "%s %d",
                  i18n_en_months[time_info.tm_mon], time_info.tm_mday);
+    } else if (cur_lang == LANG_DE || cur_lang == LANG_FR || cur_lang == LANG_RU) {
+        /* 欧式格式：日 月，德 "21.10." / 法 "21/10" / 俄 "21.10" */
+        snprintf(buf, sizeof(buf), i18n_get(STR_HOME_DATE_FMT),
+                 time_info.tm_mday, time_info.tm_mon + 1);
+    } else {
+        /* 中日共通格式："7月21日"，日文「7月21日」同构 */
+        snprintf(buf, sizeof(buf), "%d月%d日",
+                 time_info.tm_mon + 1, time_info.tm_mday);
     }
     if (date_label) {
         lv_label_set_text(date_label, buf);
