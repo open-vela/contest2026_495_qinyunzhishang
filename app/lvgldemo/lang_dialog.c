@@ -288,6 +288,9 @@ static void lang_do_confirm(void)
         {
         case LANG_ZH_CN: hint = i18n_get(STR_LANG_ALREADY_ZH); break;
         case LANG_JA:    hint = i18n_get(STR_LANG_ALREADY_JA); break;
+        case LANG_DE:    hint = i18n_get(STR_LANG_ALREADY_DE); break;
+        case LANG_FR:    hint = i18n_get(STR_LANG_ALREADY_FR); break;
+        case LANG_RU:    hint = i18n_get(STR_LANG_ALREADY_RU); break;
         case LANG_EN:
         default:         hint = i18n_get(STR_LANG_ALREADY_EN); break;
         }

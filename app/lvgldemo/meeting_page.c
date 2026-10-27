@@ -763,6 +763,42 @@ static void *meeting_asr_thread_func(void *arg)
                     "内容テーマ：この録音の核心的内容や主題を一文で概括してください（詩の朗読なら詩の名前を、雑談なら話題を概括）\n"
                     "内容総括：内容の種類に応じて柔軟に要約してください。仕事・学習関係なら要点と結論を抽出し、詩・朗読関係なら作品情報と主な内容を簡潔に説明し、日常会話なら議論の話題と重要な情報を概括してください。200字以内にしてください\n"
                     "重要：内容の種類にかかわらず、意味のある要約を必ず生成してください。'生成できません'や'実質的な内容がありません'とは言わないでください。上記の2つの部分を直接出力してください。";
+            } else if (current_lang == LANG_DE) {
+                summary_prompt =
+                    "Erstellen Sie eine knappe inhaltliche Zusammenfassung des folgenden transkribierten Sprachtexts. "
+                    "Diese Aufnahme kann eine Arbeitsbesprechung, ein Alltagsgespräch, eine Lernaufzeichnung oder jede andere Art von gesprochenem Inhalt sein.\n"
+                    "Formatanforderungen (nur Klartext, keine Markdown-Symbole wie *, #, -):\n"
+                    "Thema: Fassen Sie den Kern oder das Hauptthema dieser Aufnahme in einem Satz zusammen "
+                    "(bei Gedichtrezitation nennen Sie das Gedicht und seinen Titel, bei lockeren Gesprächen fassen Sie das Gesprächsthema zusammen)\n"
+                    "Zusammenfassung: Passen Sie die Zusammenfassung flexibel an den Inhaltstyp an. Bei Arbeit/Studium arbeiten Sie Kernpunkte und Schlussfolgerungen heraus; "
+                    "bei Gedichten/Vorlesen beschreiben Sie Werkinformationen und Hauptinhalt kurz; "
+                    "bei Alltagsgesprächen fassen Sie diskutierte Themen und Kerninformationen zusammen. Maximal 200 Wörter\n"
+                    "Wichtig: Erstellen Sie unabhängig vom Inhaltstyp immer eine sinnvolle Zusammenfassung. "
+                    "Sagen Sie niemals 'kann nicht erstellt werden' oder 'kein substanzieller Inhalt'. Geben Sie die beiden Teile direkt aus.";
+            } else if (current_lang == LANG_FR) {
+                summary_prompt =
+                    "Générez un résumé concis du contenu à partir de la transcription vocale suivante. "
+                    "Cet enregistrement peut être une réunion de travail, une conversation quotidienne, des notes d'étude ou tout autre type de contenu parlé.\n"
+                    "Exigences de format (texte brut uniquement, sans symboles markdown comme *, #, -) :\n"
+                    "Sujet : Résumez en une phrase le contenu essentiel ou le thème de cet enregistrement "
+                    "(s'il s'agit d'une récitation de poésie, indiquez le poème et son titre ; s'il s'agit d'une conversation décontractée, résumez le sujet)\n"
+                    "Résumé : Adaptez le résumé au type de contenu. Pour le travail/les études, extrayez les points clés et les conclusions ; "
+                    "pour la poésie/la lecture, décrivez brièvement les informations sur l'œuvre et le contenu principal ; "
+                    "pour une conversation quotidienne, résumez les sujets abordés et les informations clés. Maximum 200 mots\n"
+                    "Important : Générez toujours un résumé significatif, quel que soit le type de contenu. "
+                    "Ne dites jamais 'impossible de générer' ou 'pas de contenu substantiel'. Produisez directement les deux parties.";
+            } else if (current_lang == LANG_RU) {
+                summary_prompt =
+                    "Составьте краткое резюме содержания следующей расшифровки речи. "
+                    "Эта запись может быть рабочим совещанием, повседневным разговором, учебной заметкой или любым другим типом устного содержания.\n"
+                    "Требования к формату (только простой текст, без символов разметки вроде *, #, -):\n"
+                    "Тема: Опишите одним предложением суть или главную тему этой записи "
+                    "(если это чтение стихов — укажите стихотворение и его название; если это непринуждённая беседа — обобщите её тему)\n"
+                    "Резюме: Формулируйте резюме гибко в зависимости от типа содержания. Для работы/учёбы выделите ключевые пункты и выводы; "
+                    "для поэзии/чтения кратко опишите сведения о произведении и основное содержание; "
+                    "для повседневного разговора обобщите темы обсуждения и ключевую информацию. Не более 200 слов\n"
+                    "Важно: Независимо от типа содержания всегда создавайте осмысленное резюме. "
+                    "Никогда не говорите 'невозможно создать' или 'нет существенного содержания'. Выведите обе части напрямую.";
             } else {
                 summary_prompt =
                     "请根据以下语音转写文本生成简洁的内容摘要。这段录音可能是工作会议、日常对话、学习记录或任何类型的语音内容。\n"

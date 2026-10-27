@@ -64,6 +64,9 @@ typedef enum {
     STR_LANG_ALREADY_ZH,        /* 当前已是简体中文 / Already Simplified Chinese */
     STR_LANG_ALREADY_EN,        /* 当前已是English / Already English */
     STR_LANG_ALREADY_JA,        /* 当前已是日本語 / Already Japanese */
+    STR_LANG_ALREADY_DE,        /* 当前已是Deutsch / Already German */
+    STR_LANG_ALREADY_FR,        /* 当前已是Français / Already French */
+    STR_LANG_ALREADY_RU,        /* 当前已是Русский / Already Russian */
 
     /* 拦截提示 */
     STR_BLOCK_CALL,             /* 通话中无法切换语言 / Cannot switch during call */

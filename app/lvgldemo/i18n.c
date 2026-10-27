@@ -98,6 +98,9 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_LANG_ALREADY_ZH]     = "当前已是简体中文",
         [STR_LANG_ALREADY_EN]     = "当前已是English",
         [STR_LANG_ALREADY_JA]     = "当前已是日本語",
+        [STR_LANG_ALREADY_DE]     = "当前已是Deutsch",
+        [STR_LANG_ALREADY_FR]     = "当前已是Français",
+        [STR_LANG_ALREADY_RU]     = "当前已是Русский",
         /* 拦截提示 */
         [STR_BLOCK_CALL]          = "通话中无法切换语言",
         [STR_BLOCK_RECORDER]      = "录音中无法切换语言",
@@ -208,6 +211,9 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_LANG_ALREADY_ZH]     = "Already Simplified Chinese",
         [STR_LANG_ALREADY_EN]     = "Already English",
         [STR_LANG_ALREADY_JA]     = "Already Japanese",
+        [STR_LANG_ALREADY_DE]     = "Already German",
+        [STR_LANG_ALREADY_FR]     = "Already French",
+        [STR_LANG_ALREADY_RU]     = "Already Russian",
         /* 拦截提示 */
         [STR_BLOCK_CALL]          = "Cannot switch during call",
         [STR_BLOCK_RECORDER]      = "Cannot switch during recording",
@@ -318,6 +324,9 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_LANG_ALREADY_ZH]     = "現在簡体中文です",
         [STR_LANG_ALREADY_EN]     = "現在Englishです",
         [STR_LANG_ALREADY_JA]     = "現在日本語です",
+        [STR_LANG_ALREADY_DE]     = "現在Deutschです",
+        [STR_LANG_ALREADY_FR]     = "現在Françaisです",
+        [STR_LANG_ALREADY_RU]     = "現在Русскийです",
         /* 拦截提示 */
         [STR_BLOCK_CALL]          = "通話中は言語を切替できません",
         [STR_BLOCK_RECORDER]      = "録音中は言語を切替できません",
@@ -428,6 +437,9 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_LANG_ALREADY_ZH]     = "Bereits vereinfachtes Chinesisch",
         [STR_LANG_ALREADY_EN]     = "Bereits Englisch",
         [STR_LANG_ALREADY_JA]     = "Bereits Japanisch",
+        [STR_LANG_ALREADY_DE]     = "Bereits Deutsch",
+        [STR_LANG_ALREADY_FR]     = "Bereits Französisch",
+        [STR_LANG_ALREADY_RU]     = "Bereits Russisch",
         /* 拦截提示 */
         [STR_BLOCK_CALL]          = "Wechsel während Anruf nicht möglich",
         [STR_BLOCK_RECORDER]      = "Wechsel während Aufnahme nicht möglich",
@@ -450,7 +462,7 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_FEISHU_MSG_FILTER]   = "Nachr.-Filter",
         [STR_FEISHU_CONV]         = "Lark-Chat",
         [STR_FEISHU_DOC_QUERY]    = "Dok-Suche",
-        [STR_AI_WAKEWORD_USER]    = "Hi buddy!",
+        [STR_AI_WAKEWORD_USER]    = "Hi, Kumpel!",
         [STR_AI_WAKEWORD_REPLY]  = "Hallo, ich höre zu!",
         /* Camera 页 */
         [STR_CAM_TITLE]           = "KI-Kamera",
@@ -538,6 +550,9 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_LANG_ALREADY_ZH]     = "Déjà en chinois simplifié",
         [STR_LANG_ALREADY_EN]     = "Déjà en anglais",
         [STR_LANG_ALREADY_JA]     = "Déjà en japonais",
+        [STR_LANG_ALREADY_DE]     = "Déjà en allemand",
+        [STR_LANG_ALREADY_FR]     = "Déjà en français",
+        [STR_LANG_ALREADY_RU]     = "Déjà en russe",
         /* 拦截提示 */
         [STR_BLOCK_CALL]          = "Impossible pendant un appel",
         [STR_BLOCK_RECORDER]      = "Impossible pendant l'enregistrement",
@@ -648,6 +663,9 @@ static const char *const s_strings[LANG_COUNT][STR_COUNT] = {
         [STR_LANG_ALREADY_ZH]     = "Уже упрощённый китайский",
         [STR_LANG_ALREADY_EN]     = "Уже английский",
         [STR_LANG_ALREADY_JA]     = "Уже японский",
+        [STR_LANG_ALREADY_DE]     = "Уже немецкий",
+        [STR_LANG_ALREADY_FR]     = "Уже французский",
+        [STR_LANG_ALREADY_RU]     = "Уже русский",
         /* 拦截提示 */
         [STR_BLOCK_CALL]          = "Нельзя переключить во время звонка",
         [STR_BLOCK_RECORDER]      = "Нельзя переключить во время записи",
