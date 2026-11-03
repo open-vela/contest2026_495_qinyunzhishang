@@ -1,0 +1,60 @@
+## Hard Constraints
+- ASR must use DashScope Paraformer realtime WebSocket API (paraformer-realtime-v2)
+- UI must not be blocked during ASR transcription (implemented with background threads)
+- ASR audio must be sent as raw PCM binary via WebSocket Binary Frame (opcode=0x02), not base64-encoded in JSON
+- Voice command '开始会议' must immediately trigger meeting page跳转 without subsequent AI response
+- All Git commits must follow Gerrit specification with [BES2800][SW][1/1] prefix and include Change-Id
+- Push target must be refs/for/openvela_bes2800_release for code review
+- .vscode/ directory must not be committed to version control
+- Must use git rebase instead of merge when pulling remote changes (Gerrit does not allow merge commits)
+- When network is poor at meeting end, only save WAV recording and show modal prompt with retry transcription option
+- Network detection thread stack size must be 32KB (not 16KB) to prevent TLS handshake stack overflow
+- Network detection must use meeting_netcheck_thread_running flag to prevent multiple concurrent detection threads
+- Network detection callback must check meeting_screen validity before proceeding with ASR or modal display
+- LVGL 8.x API must be used; avoid LVGL 9.x-specific flags like LV_OBJ_FLAG_NOT_CLICKABLE
+- Font loading must use lv_freetype_font_create() instead of lv_font_load() to prevent undefined reference errors
+- UI elements must be sized to fit circular screen (80-85% width max) to prevent content overflow
+- Button containers must use lv_obj_clear_flag(container, LV_OBJ_FLAG_CLICKABLE) to allow click event propagation
+- Scrollable UI areas must use lv_obj_set_scroll_dir(cont, LV_DIR_VER) with LV_SCROLLBAR_MODE_OFF for consistency with project patterns
+- Function menu page must have first row as '返回主界面' button for explicit navigation
+- Non-meeting mode: 30-second inactivity triggers automatic return to home screen
+- Meeting mode: 30-second inactivity must not trigger return during recording or ASR transcription
+- UI optimizations must not alter existing core functionality
+- Meeting page must maintain consistent black-and-white minimalist design with subtle gray accents
+- Transcription text must use 20px font size for improved readability
+- End meeting button must use circular shape with square icon (geometric design) instead of text
+- Return button must use transparent background with white icon
+- UI modifications must be isolated to style changes without altering callback functions or business logic
+- UI changes must be implemented in meeting_page.c with minimal file modifications
+- Font size adjustments must not cause layout overflow or require scrollbar activation
+- Style changes must not affect touch target sizes or click event handling
+- Color modifications must maintain sufficient contrast ratio for readability
+- Layout adjustments must preserve existing information hierarchy
+- Function menu screen must have padding=0 to ensure full-screen layout without extra margins
+- Voice conversation menu item must use LV_SYMBOL_AUDIO (audio icon) for clarity (LV_SYMBOL_MIC is deprecated)
+- Meeting play button transition must use 300ms fade-out animation for smooth screen transitions
+- Function menu item icons must use LVGL built-in symbols (not custom UTF-8 characters) to ensure font compatibility
+- Function menu items must maintain 14×14px icon size to preserve layout consistency
+- UI animation callbacks must be declared before use to ensure C compiler compatibility
+- Meeting idle container must reset opacity to LV_OPA_COVER after fade-out animation for proper re-display
+- Function menu screen must have border_width=0 to eliminate unintended visual borders
+- Menu item creation functions must maintain consistent parameter order: parent, index, icon, text, callback
+- UI animation ready callbacks must explicitly hide containers after opacity transition completes
+- Function menu screen background must be set to lv_color_black() with LV_OPA_COVER for consistent appearance
+- Meeting page start function must be called after fade-out animation completes to maintain visual continuity
+- Menu item icons must use LVGL symbol constants (e.g., LV_SYMBOL_CALL, LV_SYMBOL_AUDIO) for compile-time validation
+- UI animation execution callbacks must use lv_anim_exec_xcb_t type casting for LVGL 8.x compatibility
+- UI animation time must be set to 300ms for consistent transition speed across interface elements
+- Meeting page UI transitions must use lv_anim_t with LV_OPA_COVER to LV_OPA_TRANSP values for smooth fade effects
+- Meeting page bottom buttons must have border_width=0 to remove unintended dashed borders
+- TTS_MAX_SEGMENT_BYTES must be set to 150 (not 300) to enable natural punctuation-based segmentation for medium-length documents
+- 飞书文档查询reply拼接前必须将read_result中的换行符替换为空格（合并连续换行为单个空格）以消除has_newlines标志
+- 飞书文档显示需保留换行符，TTS播报前需将换行符替换为空格以避免怪音
+-宣传语修改需保持原句骨架，强调OpenVela OS作为Agent运行底座的作用
+-宣传语修改应采用最小改动方案，避免句子结构大幅调整
+-推荐使用"基于开源 OpenVela OS 运行的 AI Agent 办公助手，由云端 AI 大模型赋能，高效便携。专为办公场景打造，让信息处理自然顺畅。"作为宣传语修改方案
+- Language switch page must not be rebuilt after language change to avoid crash (documented in lang_exit_to_settings() comments), only perform in-place text refresh via lv_label_set_text()
+- 多语言字体子集化替换时必须保留现有全部已支持语种的字符区块（拉丁、西里尔、假名、汉字），不能仅保留新增语种字符，避免已上线语种UI出现方框乱码
+- 公开大赛仓库提交前必须排查所有敏感信息（API密钥、飞书应用凭证、内网地址），使用环境变量或占位符替换真实密钥，防止信息泄露
+- 大赛仓库提交需遵循其自身的CONTRIBUTING规范，不要直接照搬公司Gerrit的提交前缀和Change-Id规则
+- 大赛宣发网站技术规格必须与公开竞赛仓库README内容完全对齐，避免出现不一致的性能指标或自研属性描述
